@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.newsSummeriser.model.NewsCard;
 import com.newsSummeriser.model.TrendingNews;
+import com.newsSummeriser.service.ContentScraper;
 import com.newsSummeriser.service.HomePageService;
 import com.newsSummeriser.service.NewsScraper;
 
@@ -20,12 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TempController {
     @Autowired
     NewsScraper ns;
+    @Autowired
+    ContentScraper cs ;
+    
 
-    // @Autowired
-    // ContentScraper cs;
+
     @Autowired
     HomePageService homePageService;
-
 
     @GetMapping("/")
     public String getMethodName() {
@@ -36,6 +38,13 @@ public class TempController {
         return "ok";
 
     }
+    @GetMapping("/p")
+    public String fechMethod() {
+        return cs.fetchArticle("https://www.amarujala.com/world/khalistan-supporter-extremists-breach-eam-s-jaishankar-security-in-london-uk-know-their-base-and-history-2025-03-08?src=tlh&position=1");
+        
+    }
+    
+
 
 
     
