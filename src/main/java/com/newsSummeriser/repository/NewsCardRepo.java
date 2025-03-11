@@ -12,5 +12,6 @@ public interface NewsCardRepo  extends JpaRepository <NewsCard , Long> {
    // List<NewsCard> findByTopSectionOrderByDateDesc(String topSection);
    Optional<NewsCard> findByHeadlineAndImageUrlAndArticleLink(String headline, String imageUrl, String articleLink);
    List <NewsCard> findByFetchedFalse();
+   boolean existsByHeadlineAndImageUrlAndArticleLink(String headline, String imageUrl, String articleLink);
 
 }  

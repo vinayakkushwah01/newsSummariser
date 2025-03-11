@@ -1,22 +1,29 @@
 package com.newsSummeriser.service;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.newsSummeriser.exception.DuplicateNewsException;
 import com.newsSummeriser.model.HashTags;
 import com.newsSummeriser.model.NewsCard;
 import com.newsSummeriser.model.Tags;
-import com.newsSummeriser.model.TrendingNews;
+import com.newsSummeriser.model.BreakingNews;
+import com.newsSummeriser.repository.BreakingNewsRepo;
 import com.newsSummeriser.repository.HashTagsRepo;
 import com.newsSummeriser.repository.TagsRepo;
+
+import jakarta.annotation.PostConstruct;
+
 import com.newsSummeriser.repository.NewsCardRepo;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,11 +37,16 @@ public class NewsScraper {
     private TagsRepo tegsRepo;
     @Autowired
     private HashTagsRepo hashTagsRepo;
+    @Autowired
+    private BreakingNewsRepo breakingNewsRepo;
+
  
 
-    
-    public void  getMainNews(String url) {
-       // String url = "https://www.amarujala.com/";
+     //  Run once when the server starts
+    @PostConstruct
+    @Scheduled(fixedRate = 30 * 60 * 1000) // Run every 30 minutes
+    public void  getMainNews() {
+       String url = "https://www.amarujala.com/";
        try {
         Document doc = Jsoup.connect(url).get();
 
@@ -101,14 +113,21 @@ public class NewsScraper {
                 ns.setDate(date);
                 ns.setFetched(false);
 
-
-
+                // Check for duplicate entry
                 Optional<NewsCard> existingNews = newsCardRepo.findByHeadlineAndImageUrlAndArticleLink(
-                    ns.getHeadline(), ns.getImageUrl(), ns.getArticleLink());
+                    headline, imageUrl, articleLink);
 
-                    if (existingNews.isPresent()) {
-                         throw new DuplicateNewsException("Duplicate entry! This news article already exists.");
-                    }
+                if (existingNews.isPresent()) {
+                    System.out.println("Skipping duplicate news entry: " + headline);
+                    continue; // Skip this entry and move to the next one
+                }
+
+                // Optional<NewsCard> existingNews = newsCardRepo.findByHeadlineAndImageUrlAndArticleLink(
+                //     ns.getHeadline(), ns.getImageUrl(), ns.getArticleLink());
+
+                //     if (existingNews.isPresent()) {
+                //          throw new DuplicateNewsException("Duplicate entry! This news article already exists.");
+                //   }
                 newsCardRepo.save(ns);
 
             // Print extracted details for each news
@@ -129,6 +148,56 @@ public class NewsScraper {
 
 
 
+    @Scheduled(fixedRate = 5 * 60 * 1000) // Run every 5 minutes
+public List<BreakingNews> fetchBreakingNews() {
+    String ajaxUrl = "https://www.amarujala.com/ajax/home-page-live-section";
+    List<BreakingNews> breakingNewsList = new ArrayList<>();
+
+    try {
+        Connection.Response response = Jsoup.connect(ajaxUrl)
+            .method(Connection.Method.GET)
+            .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36")
+            .header("Referer", "https://www.amarujala.com/")
+            .header("X-Requested-With", "XMLHttpRequest")
+            .ignoreContentType(true)
+            .execute();
+
+        Document doc = Jsoup.parse(response.body());
+        Elements newsElements = doc.select("div.__main_listing_content ul li");
+
+        for (Element newsElement : newsElements) {
+            BreakingNews news = new BreakingNews();
+            Element linkElement = newsElement.selectFirst("a");
+
+            if (linkElement != null) {
+                String headline = linkElement.text();
+                String newsUrl = "https://www.amarujala.com" + linkElement.attr("href");
+
+                // Check if news already exists
+                Optional<BreakingNews> existingNews = breakingNewsRepo.findByBreakingHeadlineAndBreakingUrl(headline, newsUrl);
+                if (existingNews.isPresent()) {
+                    continue; // Skip duplicate news
+                }
+
+                news.setBreakingHeadline(headline);
+                news.setBreakingUrl(newsUrl);
+            }
+
+            Element timeElement = newsElement.selectFirst(".time");
+            if (timeElement != null) {
+                news.setBreakingTime(timeElement.text());
+            }
+
+            news.setLocalDateTime(LocalDateTime.now());
+            breakingNewsList.add(news);
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return breakingNewsRepo.saveAllAndFlush(breakingNewsList);
+}
 
 
 }

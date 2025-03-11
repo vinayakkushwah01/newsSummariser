@@ -1,7 +1,10 @@
 package com.newsSummeriser.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -102,6 +105,9 @@ public class ContentScraper {
         return "Scraping Failed!";
     }
 
+         //  Run once when the server starts
+    @PostConstruct
+    @Scheduled(fixedRate = 1830000, initialDelay = 60000) // Run every 30.5 min and intial wait for 1 min  minutes
     public String mapArticles() {
         entityManager.clear(); //
         List<NewsCard> unfatchedNewsCards = newsCardRepo.findByFetchedFalse();

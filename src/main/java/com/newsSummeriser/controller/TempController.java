@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.newsSummeriser.model.NewsCard;
-import com.newsSummeriser.model.TrendingNews;
+import com.newsSummeriser.model.BreakingNews;
 import com.newsSummeriser.service.ContentScraper;
 import com.newsSummeriser.service.HomePageService;
 import com.newsSummeriser.service.NewsScraper;
@@ -19,30 +19,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequestMapping("/api/news") // Base path for your news-related endpoints
 public class TempController {
-    @Autowired
-    NewsScraper ns;
-    @Autowired
-    ContentScraper cs ;
+    // @Autowired
+    // NewsScraper ns;
+    // @Autowired
+    // ContentScraper cs ;
     
 
 
     @Autowired
     HomePageService homePageService;
 
-    @GetMapping("/")
-    public String getMethodName() {
-        ns.getMainNews("https://www.amarujala.com/");
+    // @GetMapping("/")
+    // public  List<BreakingNews> getMethodName() {
+    //     // //ns.getMainNews("https://www.amarujala.com/");
         
-        //cs.categoryScraper("https://navbharattimes.indiatimes.com/");
-		//cs.articleBodyScraper("https://navbharattimes.indiatimes.com/india/conflict-between-bjp-and-congress-escalates-over-usaid-funding-presenting-evidence-against-each-other/articleshow/118476730.cms");
-        return "ok";
+    //     // return ns.fetchBreakingNews();
 
-    }
-    @GetMapping("/p")
-    public String fechMethod() {
-        return cs.mapArticles();
+    // }
+    // @GetMapping("/p")
+    // public String fechMethod() {
+    //     // return cs.mapArticles();
         
-    }
+    // }
     
 
 
