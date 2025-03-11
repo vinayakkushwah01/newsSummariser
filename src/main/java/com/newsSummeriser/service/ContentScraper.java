@@ -2,6 +2,8 @@ package com.newsSummeriser.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import com.newsSummeriser.model.NewsArticle;
 import com.newsSummeriser.repository.NewsArticleRepo;
@@ -25,6 +27,8 @@ public class ContentScraper {
    @Autowired
     private NewsCardRepo newsCardRepo;
 
+ @PersistenceContext  // ✅ Inject EntityManager properly
+    private EntityManager entityManager;
 
     public String fetchArticle(String url ,Long id ) {
         try {
@@ -99,35 +103,29 @@ public class ContentScraper {
     }
 
     public String mapArticles() {
+        entityManager.clear(); //
         List<NewsCard> unfatchedNewsCards = newsCardRepo.findByFetchedFalse();
     
-        // Use Iterator to safely remove elements while iterating
         Iterator<NewsCard> iterator = unfatchedNewsCards.iterator();
         while (iterator.hasNext()) {
             NewsCard entity = iterator.next();
     
             if (entity.getDate() == null) {
-                iterator.remove(); // Safe removal
-                newsCardRepo.delete(entity); 
+                iterator.remove();
+                newsCardRepo.deleteById(entity.getId());  // Delete from DB
                 continue;
             }
     
-            // Get entity ID
             Long id = entity.getId();
             String url = "https://www.amarujala.com/" + entity.getArticleLink();
     
-            // Fetch article
             String res = fetchArticle(url, id);
     
-            // If fetching is successful, mark entity as fetched
-            if ("ok".equals(res)) {
+            if ("Scraping Successful!".equals(res)) {  
                 entity.setFetched(true);
-                //newsCardRepo.saveAndFlush(entity);
+                newsCardRepo.saveAndFlush(entity);  //  Saves each entity individually
             }
         }
-    
-        // Save updated entities
-        newsCardRepo.saveAllAndFlush(unfatchedNewsCards);
     
         return "ok all Articles are added";
     }
