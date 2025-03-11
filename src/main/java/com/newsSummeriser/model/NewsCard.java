@@ -55,6 +55,9 @@ public class NewsCard{
     @OneToMany(mappedBy = "newsCard", cascade = CascadeType.ALL, orphanRemoval = true)
      private List<HashTags> hashtags;
     private String date;
+
+    private boolean fetched;
+    
     public NewsCard() {
     }
 }

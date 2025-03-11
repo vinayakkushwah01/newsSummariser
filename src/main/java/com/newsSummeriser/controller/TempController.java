@@ -31,7 +31,7 @@ public class TempController {
 
     @GetMapping("/")
     public String getMethodName() {
-        ns.getMainNews("https://www.amarujala.com/uttar-pradesh");
+        ns.getMainNews("https://www.amarujala.com/");
         
         //cs.categoryScraper("https://navbharattimes.indiatimes.com/");
 		//cs.articleBodyScraper("https://navbharattimes.indiatimes.com/india/conflict-between-bjp-and-congress-escalates-over-usaid-funding-presenting-evidence-against-each-other/articleshow/118476730.cms");
@@ -40,7 +40,7 @@ public class TempController {
     }
     @GetMapping("/p")
     public String fechMethod() {
-        return cs.fetchArticle("https://www.amarujala.com/world/khalistan-supporter-extremists-breach-eam-s-jaishankar-security-in-london-uk-know-their-base-and-history-2025-03-08?src=tlh&position=1");
+        return cs.mapArticles();
         
     }
     

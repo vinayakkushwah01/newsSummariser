@@ -82,6 +82,11 @@ public class NewsScraper {
                     hashtags.add(hs);
                 }
             }
+            if (subheading.length() <= 100) {
+                subheading =  subheading;
+            } else {
+                subheading =  subheading.substring(0, 100);
+            }
 
             // Extract Date
             Element dateElement = newsBlock.selectFirst(".date span");
@@ -94,6 +99,7 @@ public class NewsScraper {
                 ns.setTags(tags);
                 ns.setHashtags(hashtags);
                 ns.setDate(date);
+                ns.setFetched(false);
 
 
 
