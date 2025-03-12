@@ -1,0 +1,67 @@
+[
+    {
+      "category": "देश",
+      "url": "/india-news?src=hbmenu"
+    },
+    {
+      "category": "दुनिया",
+      "url": "/world?src=hbmenu"
+    },
+    {
+      "category": "मनोरंजन",
+      "url": "/entertainment?src=hbmenu"
+    },
+    {
+      "category": "क्रिकेट",
+      "url": "/cricket?src=hbmenu"
+    },
+    {
+      "category": "कारोबार",
+      "url": "/business?src=hbmenu"
+    },
+    {
+      "category": "नौकरी",
+      "url": "/jobs?src=hbmenu"
+    },
+    {
+      "category": "शिक्षा",
+      "url": "/education?src=hbmenu"
+    },
+    {
+      "category": "टेक्नोलॉजी",
+      "url": "/technology?src=hbmenu"
+    },
+    {
+      "category": "ऑटो",
+      "url": "/automobiles?src=hbmenu"
+    },
+    {
+      "category": "ज्योतिष",
+      "url": "/astrology?src=hbmenu"
+    },
+    {
+      "category": "खेल",
+      "url": "/sports?src=hbmenu"
+    },
+    {
+      "category": "हेल्थ एंड फिटनेस",
+      "url": "/lifestyle/fitness?src=hbmenu"
+    },
+    {
+      "category": "फैशन",
+      "url": "/fashion?src=hbmenu"
+    },
+    {
+      "category": "शक्ति",
+      "url": "/shakti?src=hbmenu"
+    },
+    {
+      "category": "आस्था",
+      "url": "/spirituality?src=hbmenu"
+    },
+    {
+      "category": "बॉलीवुड",
+      "url": "/entertainment/bollywood?src=hbmenu"
+    }
+  ]
+  

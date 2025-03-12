@@ -1,0 +1,998 @@
+{
+    "uttar-pradesh": [
+        {
+            "city": "उत्तर प्रदेश",
+            "url": "/uttar-pradesh"
+        },
+        {
+            "city": "वाराणसी",
+            "url": "/uttar-pradesh/varanasi"
+        },
+        {
+            "city": "मेरठ",
+            "url": "/uttar-pradesh/meerut"
+        },
+        {
+            "city": "कानपुर",
+            "url": "/uttar-pradesh/kanpur"
+        },
+        {
+            "city": "आगरा",
+            "url": "/uttar-pradesh/agra"
+        },
+        {
+            "city": "प्रयागराज",
+            "url": "/uttar-pradesh/allahabad"
+        },
+        {
+            "city": "अलीगढ़",
+            "url": "/uttar-pradesh/aligarh"
+        },
+        {
+            "city": "झांसी",
+            "url": "/uttar-pradesh/jhansi"
+        },
+        {
+            "city": "बरेली",
+            "url": "/uttar-pradesh/bareilly"
+        },
+        {
+            "city": "मुरादाबाद",
+            "url": "/uttar-pradesh/moradabad"
+        },
+        {
+            "city": "मथुरा",
+            "url": "/uttar-pradesh/mathura"
+        },
+        {
+            "city": "अमरोहा",
+            "url": "/uttar-pradesh/amroha"
+        },
+        {
+            "city": "अमेठी",
+            "url": "/uttar-pradesh/amethi"
+        },
+        {
+            "city": "अम्बेडकरनगर",
+            "url": "/uttar-pradesh/ambedkar-nagar"
+        },
+        {
+            "city": "आजमगढ़",
+            "url": "/uttar-pradesh/azamgarh"
+        },
+        {
+            "city": "इटावा",
+            "url": "/uttar-pradesh/etawah"
+        },
+        {
+            "city": "उन्नाव",
+            "url": "/uttar-pradesh/unnao"
+        },
+        {
+            "city": "एटा",
+            "url": "/uttar-pradesh/etah"
+        },
+        {
+            "city": "औरैया",
+            "url": "/uttar-pradesh/auraiya"
+        },
+        {
+            "city": "कन्नौज",
+            "url": "/uttar-pradesh/kannauj"
+        },
+        {
+            "city": "कुशीनगर",
+            "url": "/uttar-pradesh/kushinagar"
+        },
+        {
+            "city": "कौशाम्बी",
+            "url": "/uttar-pradesh/kaushambi"
+        },
+        {
+            "city": "ग़ाज़ीपुर",
+            "url": "/uttar-pradesh/ghazipur"
+        },
+        {
+            "city": "बस्ती",
+            "url": "/uttar-pradesh/basti"
+        },
+        {
+            "city": "गोंडा",
+            "url": "/uttar-pradesh/gonda"
+        },
+        {
+            "city": "बहराइच",
+            "url": "/uttar-pradesh/bahraich"
+        },
+        {
+            "city": "लखीमपुर खीरी",
+            "url": "/uttar-pradesh/lakhimpur-kheri"
+        },
+        {
+            "city": "घाटमपुर",
+            "url": "/uttar-pradesh/ghatampur"
+        },
+        {
+            "city": "जालौन",
+            "url": "/uttar-pradesh/jalaun"
+        },
+        {
+            "city": "चंदौली",
+            "url": "/uttar-pradesh/chandauli"
+        },
+        {
+            "city": "चित्रकूट",
+            "url": "/uttar-pradesh/chitrakoot"
+        },
+        {
+            "city": "पीलीभीत",
+            "url": "/uttar-pradesh/pilibhit"
+        },
+        {
+            "city": "देवरिया",
+            "url": "/uttar-pradesh/deoria"
+        },
+        {
+            "city": "फतेहपुर",
+            "url": "/uttar-pradesh/fatehpur"
+        },
+        {
+            "city": "फर्रुखाबाद",
+            "url": "/uttar-pradesh/farrukhabad"
+        },
+        {
+            "city": "फ़िरोज़ाबाद",
+            "url": "/uttar-pradesh/firozabad"
+        },
+        {
+            "city": "अयोध्या",
+            "url": "/uttar-pradesh/ayodhya"
+        },
+        {
+            "city": "बदायूं",
+            "url": "/uttar-pradesh/budaun"
+        },
+        {
+            "city": "बलरामपुर",
+            "url": "/uttar-pradesh/balrampur"
+        },
+        {
+            "city": "बलिया",
+            "url": "/uttar-pradesh/ballia"
+        },
+        {
+            "city": "बांदा",
+            "url": "/uttar-pradesh/banda"
+        },
+        {
+            "city": "बागपत",
+            "url": "/uttar-pradesh/baghpat"
+        },
+        {
+            "city": "बाराबंकी",
+            "url": "/uttar-pradesh/barabanki"
+        },
+        {
+            "city": "बिजनौर",
+            "url": "/uttar-pradesh/bijnor"
+        },
+        {
+            "city": "बुलंदशहर",
+            "url": "/uttar-pradesh/bulandshahr"
+        },
+        {
+            "city": "भदोही",
+            "url": "/uttar-pradesh/bhadohi"
+        },
+        {
+            "city": "मउ",
+            "url": "/uttar-pradesh/mau"
+        },
+        {
+            "city": "महराजगंज",
+            "url": "/uttar-pradesh/maharajganj"
+        },
+        {
+            "city": "महोबा",
+            "url": "/uttar-pradesh/mahoba"
+        },
+        {
+            "city": "मिर्ज़ापुर",
+            "url": "/uttar-pradesh/mirzapur"
+        },
+        {
+            "city": "मुज़्ज़फरनगर",
+            "url": "/uttar-pradesh/muzaffarnagar"
+        },
+        {
+            "city": "मैनपुरी",
+            "url": "/uttar-pradesh/mainpuri"
+        },
+        {
+            "city": "रायबरेली",
+            "url": "/uttar-pradesh/raebareli"
+        },
+        {
+            "city": "रामपुर",
+            "url": "/uttar-pradesh/rampur"
+        },
+        {
+            "city": "ललितपुर",
+            "url": "/uttar-pradesh/lalitpur"
+        },
+        {
+            "city": "शामली",
+            "url": "/uttar-pradesh/shamli"
+        },
+        {
+            "city": "शाहजहांपुर",
+            "url": "/uttar-pradesh/shahjahanpur"
+        },
+        {
+            "city": "श्रावस्ती",
+            "url": "/uttar-pradesh/shravasti"
+        },
+        {
+            "city": "संत कबीरनगर",
+            "url": "/uttar-pradesh/sant-kabir-nagar"
+        },
+        {
+            "city": "संभल",
+            "url": "/uttar-pradesh/sambhal"
+        },
+        {
+            "city": "सहारनपुर",
+            "url": "/uttar-pradesh/saharanpur"
+        },
+        {
+            "city": "सिद्धार्थनगर",
+            "url": "/uttar-pradesh/siddharthnagar"
+        },
+        {
+            "city": "सीतापुर",
+            "url": "/uttar-pradesh/sitapur"
+        },
+        {
+            "city": "सुल्तानपुर",
+            "url": "/uttar-pradesh/sultanpur"
+        },
+        {
+            "city": "सोनभद्र",
+            "url": "/uttar-pradesh/sonebhadra"
+        },
+        {
+            "city": "हमीरपुर",
+            "url": "/uttar-pradesh/hamirpur"
+        },
+        {
+            "city": "हरदोई",
+            "url": "/uttar-pradesh/hardoi"
+        },
+        {
+            "city": "हाथरस",
+            "url": "/uttar-pradesh/hathras"
+        },
+        {
+            "city": "हापुड़",
+            "url": "/uttar-pradesh/hapur"
+        },
+        {
+            "city": "जौनपुर",
+            "url": "/uttar-pradesh/jaunpur"
+        }
+    ],
+    "lucknow": [
+        {
+            "city": "लखनऊ",
+            "url": "/lucknow"
+        }
+    ],
+    "gorakhpur": [
+        {
+            "city": "गोरखपुर",
+            "url": "/gorakhpur"
+        }
+    ],
+    "delhi-ncr": [
+        {
+            "city": "नोएडा",
+            "url": "/delhi-ncr/noida"
+        },
+        {
+            "city": "गाजियाबाद",
+            "url": "/delhi-ncr/ghaziabad"
+        }
+    ],
+    "delhi": [
+        {
+            "city": "दिल्ली",
+            "url": "/delhi"
+        }
+    ],
+    "uttarakhand": [
+        {
+            "city": "उत्तराखंड",
+            "url": "/uttarakhand"
+        },
+        {
+            "city": "हरिद्वार",
+            "url": "/uttarakhand/haridwar"
+        },
+        {
+            "city": "रुड़की",
+            "url": "/uttarakhand/roorkee"
+        },
+        {
+            "city": "नैनीताल",
+            "url": "/uttarakhand/nainital"
+        },
+        {
+            "city": "ऋषिकेश",
+            "url": "/uttarakhand/rishikesh"
+        },
+        {
+            "city": "टिहरी",
+            "url": "/uttarakhand/tehri"
+        },
+        {
+            "city": "रुद्र प्रयाग",
+            "url": "/uttarakhand/rudraprayag"
+        },
+        {
+            "city": "अल्मोड़ा",
+            "url": "/uttarakhand/almora"
+        },
+        {
+            "city": "उत्तर काशी",
+            "url": "/uttarakhand/uttarkashi"
+        },
+        {
+            "city": "ऊधम सिंह नगर",
+            "url": "/uttarakhand/udham-singh-nagar"
+        },
+        {
+            "city": "कोटद्वार",
+            "url": "/uttarakhand/kotdwar"
+        },
+        {
+            "city": "चमोली",
+            "url": "/uttarakhand/chamoli"
+        },
+        {
+            "city": "चम्पावत",
+            "url": "/uttarakhand/champawat"
+        },
+        {
+            "city": "पिथौरागढ़",
+            "url": "/uttarakhand/pithoragarh"
+        },
+        {
+            "city": "पौड़ी",
+            "url": "/uttarakhand/pauri"
+        },
+        {
+            "city": "बागेश्वर",
+            "url": "/uttarakhand/bageshwar"
+        }
+    ],
+    "dehradun": [
+        {
+            "city": "देहरादून",
+            "url": "/dehradun"
+        }
+    ],
+    "himachal-pradesh": [
+        {
+            "city": "हिमाचल प्रदेश",
+            "url": "/himachal-pradesh"
+        },
+        {
+            "city": "कांगड़ा",
+            "url": "/himachal-pradesh/kangra"
+        },
+        {
+            "city": "मंडी",
+            "url": "/himachal-pradesh/mandi"
+        },
+        {
+            "city": "सोलन",
+            "url": "/himachal-pradesh/solan"
+        },
+        {
+            "city": "चम्बा",
+            "url": "/himachal-pradesh/chamba"
+        },
+        {
+            "city": "सिरमौर",
+            "url": "/himachal-pradesh/sirmour"
+        },
+        {
+            "city": "कुल्लू",
+            "url": "/himachal-pradesh/kullu"
+        },
+        {
+            "city": "बिलासपुर",
+            "url": "/himachal-pradesh/bilaspur"
+        },
+        {
+            "city": "हमीरपुर (हि. प्र.)",
+            "url": "/himachal-pradesh/hamirpur-hp"
+        },
+        {
+            "city": "ऊना",
+            "url": "/himachal-pradesh/una"
+        },
+        {
+            "city": "रामपुर बुशहर",
+            "url": "/himachal-pradesh/rampur-bushahar"
+        }
+    ],
+    "shimla": [
+        {
+            "city": "शिमला",
+            "url": "/shimla"
+        }
+    ],
+    "madhya-pradesh": [
+        {
+            "city": "मध्य प्रदेश",
+            "url": "/madhya-pradesh"
+        },
+        {
+            "city": "भोपाल",
+            "url": "/madhya-pradesh/bhopal"
+        },
+        {
+            "city": "इंदौर",
+            "url": "/madhya-pradesh/indore"
+        },
+        {
+            "city": "उज्जैन",
+            "url": "/madhya-pradesh/ujjain"
+        },
+        {
+            "city": "ग्वालियर",
+            "url": "/madhya-pradesh/gwalior"
+        },
+        {
+            "city": "जबलपुर",
+            "url": "/madhya-pradesh/jabalpur"
+        },
+        {
+            "city": "देवास",
+            "url": "/madhya-pradesh/dewas"
+        },
+        {
+            "city": "शिवपुरी",
+            "url": "/madhya-pradesh/shivpuri"
+        },
+        {
+            "city": "नर्मदापुरम",
+            "url": "/madhya-pradesh/narmadapuram"
+        },
+        {
+            "city": "सीहोर",
+            "url": "/madhya-pradesh/sehore"
+        },
+        {
+            "city": "अशोकनगर",
+            "url": "/madhya-pradesh/ashoknagar"
+        },
+        {
+            "city": "आगर मालवा",
+            "url": "/madhya-pradesh/agar-malwa"
+        },
+        {
+            "city": "उमरिया",
+            "url": "/madhya-pradesh/umaria"
+        },
+        {
+            "city": "खंडवा",
+            "url": "/madhya-pradesh/khandwa"
+        },
+        {
+            "city": "खरगोन",
+            "url": "/madhya-pradesh/khargone"
+        },
+        {
+            "city": "गुना",
+            "url": "/madhya-pradesh/guna"
+        },
+        {
+            "city": "छतरपुर",
+            "url": "/madhya-pradesh/chhatarpur"
+        },
+        {
+            "city": "झाबुआ",
+            "url": "/madhya-pradesh/jhabua"
+        },
+        {
+            "city": "टीकमगढ़",
+            "url": "/madhya-pradesh/tikamgarh"
+        },
+        {
+            "city": "दतिया",
+            "url": "/madhya-pradesh/datia"
+        },
+        {
+            "city": "दमोह",
+            "url": "/madhya-pradesh/damoh"
+        },
+        {
+            "city": "देवास",
+            "url": "/madhya-pradesh/dewas"
+        },
+        {
+            "city": "धार",
+            "url": "/madhya-pradesh/dhar"
+        },
+        {
+            "city": "नरसिंहपुर",
+            "url": "/madhya-pradesh/narsinghpur"
+        },
+        {
+            "city": "पन्ना",
+            "url": "/madhya-pradesh/panna"
+        },
+        {
+            "city": "बडवानी",
+            "url": "/madhya-pradesh/barwani"
+        },
+        {
+            "city": "बालाघाट",
+            "url": "/madhya-pradesh/balaghat"
+        },
+        {
+            "city": "बैतूल",
+            "url": "/madhya-pradesh/betul"
+        },
+        {
+            "city": "भिण्ड",
+            "url": "/madhya-pradesh/bhind"
+        },
+        {
+            "city": "मुरैना",
+            "url": "/madhya-pradesh/morena"
+        },
+        {
+            "city": "राजगढ़",
+            "url": "/madhya-pradesh/rajgarh"
+        },
+        {
+            "city": "विदिशा",
+            "url": "/madhya-pradesh/vidisha"
+        },
+        {
+            "city": "शाजापुर",
+            "url": "/madhya-pradesh/shajapur"
+        },
+        {
+            "city": "शिवपुरी",
+            "url": "/madhya-pradesh/shivpuri"
+        },
+        {
+            "city": "सागर",
+            "url": "/madhya-pradesh/sagar"
+        },
+        {
+            "city": "सिवनी",
+            "url": "/madhya-pradesh/seoni"
+        },
+        {
+            "city": "सीधी",
+            "url": "/madhya-pradesh/sidhi"
+        },
+        {
+            "city": "हरदा",
+            "url": "/madhya-pradesh/harda"
+        }
+    ],
+    "haryana": [
+        {
+            "city": "हरियाणा",
+            "url": "/haryana"
+        },
+        {
+            "city": "अंबाला",
+            "url": "/haryana/ambala"
+        },
+        {
+            "city": "करनाल",
+            "url": "/haryana/karnal"
+        },
+        {
+            "city": "कुरुक्षेत्र",
+            "url": "/haryana/kurukshetra"
+        },
+        {
+            "city": "कैथल",
+            "url": "/haryana/kaithal"
+        },
+        {
+            "city": "चरखी दादरी",
+            "url": "/haryana/charkhi-dadri"
+        },
+        {
+            "city": "जींद",
+            "url": "/haryana/jind"
+        },
+        {
+            "city": "झज्जर/बहादुरगढ़",
+            "url": "/haryana/jhajjar-bahadurgarh"
+        },
+        {
+            "city": "पलवल",
+            "url": "/haryana/palwal"
+        },
+        {
+            "city": "पानीपत",
+            "url": "/haryana/panipat"
+        },
+        {
+            "city": "फतेहाबाद",
+            "url": "/haryana/fatehabad"
+        },
+        {
+            "city": "भिवानी",
+            "url": "/haryana/bhiwani"
+        },
+        {
+            "city": "महेंद्रगढ़/नारनौल",
+            "url": "/haryana/mahendragarh-narnaul"
+        },
+        {
+            "city": "यमुना नगर",
+            "url": "/haryana/yamuna-nagar"
+        },
+        {
+            "city": "रेवाड़ी",
+            "url": "/haryana/rewari"
+        },
+        {
+            "city": "रोहतक",
+            "url": "/haryana/rohtak"
+        },
+        {
+            "city": "सिरसा",
+            "url": "/haryana/sirsa"
+        },
+        {
+            "city": "सोनीपत",
+            "url": "/haryana/sonipat"
+        },
+        {
+            "city": "हिसार",
+            "url": "/haryana/hisar"
+        }
+    ],
+    "chandigarh": [
+        {
+            "city": "चंडीगढ़",
+            "url": "/chandigarh"
+        },
+        {
+            "city": "चंडीगढ़",
+            "url": "/chandigarh"
+        }
+    ],
+    "chandigarh-haryana": [
+        {
+            "city": "चण्डीगढ़-हरियाणा",
+            "url": "/chandigarh-haryana"
+        }
+    ],
+    "jammu-and-kashmir": [
+        {
+            "city": "जम्मू और कश्मीर",
+            "url": "/jammu-and-kashmir"
+        },
+        {
+            "city": "उधमपुर",
+            "url": "/jammu-and-kashmir/udhampur"
+        },
+        {
+            "city": "कठुआ",
+            "url": "/jammu-and-kashmir/kathua"
+        },
+        {
+            "city": "पुंछ",
+            "url": "/jammu-and-kashmir/poonch"
+        },
+        {
+            "city": "राजौरी",
+            "url": "/jammu-and-kashmir/rajouri"
+        },
+        {
+            "city": "श्रीनगर",
+            "url": "/jammu-and-kashmir/srinagar"
+        }
+    ],
+    "jammu": [
+        {
+            "city": "जम्मू",
+            "url": "/jammu"
+        }
+    ],
+    "punjab": [
+        {
+            "city": "पंजाब",
+            "url": "/punjab"
+        },
+        {
+            "city": "अमृतसर",
+            "url": "/punjab/amritsar"
+        },
+        {
+            "city": "जालंधर",
+            "url": "/punjab/jalandhar"
+        },
+        {
+            "city": "पटियाला",
+            "url": "/punjab/patiala"
+        },
+        {
+            "city": "लुधियाना",
+            "url": "/punjab/ludhiana"
+        }
+    ],
+    "chandigarh-punjab": [
+        {
+            "city": "चण्डीगढ़-पंजाब",
+            "url": "/chandigarh-punjab"
+        }
+    ],
+    "rajasthan": [
+        {
+            "city": "राजस्थान",
+            "url": "/rajasthan"
+        },
+        {
+            "city": "जयपुर",
+            "url": "/rajasthan/jaipur"
+        },
+        {
+            "city": "जोधपुर",
+            "url": "/rajasthan/jodhpur"
+        },
+        {
+            "city": "कोटा",
+            "url": "/rajasthan/kota"
+        },
+        {
+            "city": "अलवर",
+            "url": "/rajasthan/alwar"
+        },
+        {
+            "city": "अजमेर",
+            "url": "/rajasthan/ajmer"
+        },
+        {
+            "city": "भरतपुर",
+            "url": "/rajasthan/bharatpur"
+        },
+        {
+            "city": "बीकानेर",
+            "url": "/rajasthan/bikaner"
+        },
+        {
+            "city": "नागौर",
+            "url": "/rajasthan/nagaur"
+        },
+        {
+            "city": "जालौर",
+            "url": "/rajasthan/jalore"
+        },
+        {
+            "city": "जैसलमेर",
+            "url": "/rajasthan/jaisalmer"
+        },
+        {
+            "city": "झुंझुनू",
+            "url": "/rajasthan/jhunjhunu"
+        },
+        {
+            "city": "टोंक",
+            "url": "/rajasthan/tonk"
+        },
+        {
+            "city": "दौसा",
+            "url": "/rajasthan/dausa"
+        },
+        {
+            "city": "धौलपुर",
+            "url": "/rajasthan/dholpur"
+        },
+        {
+            "city": "नागौर",
+            "url": "/rajasthan/nagaur"
+        },
+        {
+            "city": "बीकानेर",
+            "url": "/rajasthan/bikaner"
+        },
+        {
+            "city": "बूँदी",
+            "url": "/rajasthan/bundi"
+        },
+        {
+            "city": "भरतपुर",
+            "url": "/rajasthan/bharatpur"
+        },
+        {
+            "city": "भीलवाड़ा",
+            "url": "/rajasthan/bhilwara"
+        },
+        {
+            "city": "भरतपुर",
+            "url": "/rajasthan/bharatpur"
+        },
+        {
+            "city": "श्री गंगानगर",
+            "url": "/rajasthan/sri-ganganagar"
+        },
+        {
+            "city": "सिरोही",
+            "url": "/rajasthan/sirohi"
+        },
+        {
+            "city": "सीकर",
+            "url": "/rajasthan/sikar"
+        },
+        {
+            "city": "हनुमानगढ़",
+            "url": "/rajasthan/hanumangarh"
+        },
+        {
+            "city": "सलूंबर",
+            "url": "/rajasthan/salumber"
+        },
+        {
+            "city": "राजसमंद",
+            "url": "/rajasthan/rajsamand"
+        },
+        {
+            "city": "बांसवाड़ा",
+            "url": "/rajasthan/banswara"
+        },
+        {
+            "city": "उदयपुर",
+            "url": "/rajasthan/udaipur"
+        },
+        {
+            "city": "करौली",
+            "url": "/rajasthan/karauli"
+        },
+        {
+            "city": "चित्तौड़गढ़",
+            "url": "/rajasthan/chittorgarh"
+        }
+    ],
+    "bihar": [
+        {
+            "city": "बिहार",
+            "url": "/bihar"
+        },
+        {
+            "city": "पटना",
+            "url": "/bihar/patna"
+        },
+        {
+            "city": "मगध-गया",
+            "url": "/bihar/gaya"
+        },
+        {
+            "city": "भागलपुर",
+            "url": "/bihar/bhagalpur"
+        },
+        {
+            "city": "तिरहुत-मुजफ्फरपुर",
+            "url": "/bihar/muzaffarpur"
+        },
+        {
+            "city": "दरभंगा",
+            "url": "/bihar/darbhanga"
+        },
+        {
+            "city": "सारण",
+            "url": "/bihar/saran"
+        },
+        {
+            "city": "मुंगेर",
+            "url": "/bihar/munger"
+        },
+        {
+            "city": "कोसी",
+            "url": "/bihar/kosi"
+        },
+        {
+            "city": "पूर्णिया",
+            "url": "/bihar/purnea"
+        }
+    ],
+    "chhattisgarh": [
+        {
+            "city": "छत्तीसगढ़",
+            "url": "/chhattisgarh"
+        },
+        {
+            "city": "रायपुर",
+            "url": "/chhattisgarh/raipur"
+        },
+        {
+            "city": "बिलासपुर-छत्तीसगढ़",
+            "url": "/chhattisgarh/bilaspur-chhattisgarh"
+        },
+        {
+            "city": "दुर्ग-भिलाई",
+            "url": "/chhattisgarh/durg-bhilai"
+        },
+        {
+            "city": "रायगढ़",
+            "url": "/chhattisgarh/raigarh"
+        },
+        {
+            "city": "कोरबा",
+            "url": "/chhattisgarh/korba"
+        },
+        {
+            "city": "अम्बिकापुर",
+            "url": "/chhattisgarh/ambikapur"
+        },
+        {
+            "city": "जगदलपुर",
+            "url": "/chhattisgarh/jagdalpur"
+        },
+        {
+            "city": "गौरेला पेंड्रा मरवाही",
+            "url": "/chhattisgarh/gorella-pendra-marwahi"
+        },
+        {
+            "city": "बेमेतरा",
+            "url": "/chhattisgarh/bemetara"
+        },
+        {
+            "city": "जांजगीर-चांपा",
+            "url": "/chhattisgarh/janjgir-champa"
+        },
+        {
+            "city": "धमतरी",
+            "url": "/chhattisgarh/dhamtari"
+        },
+        {
+            "city": "महासमुंद",
+            "url": "/chhattisgarh/mahasamund"
+        },
+        {
+            "city": "बलौदाबाजार-भाटापारा",
+            "url": "/chhattisgarh/balodabazar-bhatapara"
+        },
+        {
+            "city": "बीजापुर",
+            "url": "/chhattisgarh/bijapur"
+        },
+        {
+            "city": "बालोद",
+            "url": "/chhattisgarh/balod"
+        },
+        {
+            "city": "कांकेर",
+            "url": "/chhattisgarh/kanker"
+        },
+        {
+            "city": "कबीरधाम",
+            "url": "/chhattisgarh/kabirdham"
+        }
+    ],
+    "jharkhand": [
+        {
+            "city": "झारखण्ड",
+            "url": "/jharkhand"
+        }
+    ],
+    "gujarat": [
+        {
+            "city": "गुजरात",
+            "url": "/gujarat"
+        }
+    ]
+}
