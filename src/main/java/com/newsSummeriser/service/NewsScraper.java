@@ -9,18 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.newsSummeriser.exception.DuplicateNewsException;
+
 import com.newsSummeriser.model.HashTags;
-import com.newsSummeriser.model.NewsCard;
+
+import com.newsSummeriser.model.NewsHeadline;
 import com.newsSummeriser.model.Tags;
 import com.newsSummeriser.model.BreakingNews;
+import com.newsSummeriser.model.Category;
 import com.newsSummeriser.repository.BreakingNewsRepo;
+import com.newsSummeriser.repository.CategoryRepository;
 import com.newsSummeriser.repository.HashTagsRepo;
+import com.newsSummeriser.repository.NewsHeadlineRepository;
 import com.newsSummeriser.repository.TagsRepo;
 
 import jakarta.annotation.PostConstruct;
 
-import com.newsSummeriser.repository.NewsCardRepo;
+// import com.newsSummeriser.repository.NewsCardRepo;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -32,7 +36,10 @@ import java.util.Optional;
 @Service
 public class NewsScraper {
     @Autowired
-    private  NewsCardRepo newsCardRepo;
+    private NewsHeadlineRepository newsHeadlineRepo;
+    @Autowired
+    private CategoryRepository categoryRepo;
+
     @Autowired
     private TagsRepo tegsRepo;
     @Autowired
@@ -40,13 +47,21 @@ public class NewsScraper {
     @Autowired
     private BreakingNewsRepo breakingNewsRepo;
 
- 
-
-     //  Run once when the server starts
     @PostConstruct
-    @Scheduled(fixedRate = 30 * 60 * 1000) // Run every 30 minutes
-    public void  getMainNews() {
-       String url = "https://www.amarujala.com/";
+   @Scheduled(fixedRate = 30 * 60 * 1000) // Run every 30 minutes
+    public void getCategoryWiseNews(){
+        String url = "https://www.amarujala.com";
+      List<Category> categoryList =   categoryRepo.findAll();
+      for (Category cat : categoryList) {
+           String subUrl =  cat.getUrl();
+           String finalUrl = url+subUrl;
+           getMainNews(finalUrl , cat);
+      }
+
+    }
+  
+    public void  getMainNews(String url ,Category provideCategory) {
+
        try {
         Document doc = Jsoup.connect(url).get();
 
@@ -68,9 +83,6 @@ public class NewsScraper {
             // Extract Article Link
             String articleLink = (headlineElement != null) ? headlineElement.attr("href") : "N/A";
 
-            // // Extract Image URL
-            // Element imageElement = newsBlock.selectFirst(".image img");
-            // String imageUrl = (imageElement != null) ? imageElement.attr("src") : "N/A";
             // Extract Image URL
             Element imageElement = newsBlock.selectFirst(".image img");
             String imageUrl = "N/A";
@@ -95,7 +107,7 @@ public class NewsScraper {
                 }
             }
             if (subheading.length() <= 100) {
-                subheading =  subheading;
+                // subheading =  subheading;
             } else {
                 subheading =  subheading.substring(0, 100);
             }
@@ -103,7 +115,7 @@ public class NewsScraper {
             // Extract Date
             Element dateElement = newsBlock.selectFirst(".date span");
             String date = (dateElement != null) ? dateElement.text() : "N/A";
-                NewsCard ns = new NewsCard();
+                NewsHeadline ns = new NewsHeadline();
                 ns.setHeadline(headline);
                 ns.setSubheading(subheading);
                 ns.setArticleLink(articleLink);
@@ -112,9 +124,10 @@ public class NewsScraper {
                 ns.setHashtags(hashtags);
                 ns.setDate(date);
                 ns.setFetched(false);
+                ns.setCategory(provideCategory);
 
                 // Check for duplicate entry
-                Optional<NewsCard> existingNews = newsCardRepo.findByHeadlineAndImageUrlAndArticleLink(
+                Optional<NewsHeadline> existingNews = newsHeadlineRepo.findByHeadlineAndImageUrlAndArticleLink(
                     headline, imageUrl, articleLink);
 
                 if (existingNews.isPresent()) {
@@ -122,13 +135,8 @@ public class NewsScraper {
                     continue; // Skip this entry and move to the next one
                 }
 
-                // Optional<NewsCard> existingNews = newsCardRepo.findByHeadlineAndImageUrlAndArticleLink(
-                //     ns.getHeadline(), ns.getImageUrl(), ns.getArticleLink());
 
-                //     if (existingNews.isPresent()) {
-                //          throw new DuplicateNewsException("Duplicate entry! This news article already exists.");
-                //   }
-                newsCardRepo.save(ns);
+                newsHeadlineRepo.save(ns);
 
             // Print extracted details for each news
             System.out.println("------------------------------------------------");

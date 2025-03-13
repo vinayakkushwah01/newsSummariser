@@ -12,8 +12,7 @@ public class Tags {
     private Long id;
 
     private String name;
-
     @ManyToOne
-    @JoinColumn(name = "news_id")  // Must match NewsCard's primary key
-    private NewsCard newsCard; 
+    @JoinColumn(name = "news_id")
+    private NewsHeadline newsHeadline; 
 }

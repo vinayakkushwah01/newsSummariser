@@ -16,6 +16,9 @@ public class Category {
 
     @Column(nullable = false, unique = true, length = 255)
     private String name;
+    
+    @Column(nullable = false)
+    private String url;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<NewsHeadline> newsHeadlines;

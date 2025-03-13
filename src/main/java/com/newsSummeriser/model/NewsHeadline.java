@@ -30,17 +30,17 @@ public class NewsHeadline {
     private String date;
     private boolean fetched;
 
-    // @OneToMany(mappedBy = "newsHeadline", cascade = CascadeType.ALL, orphanRemoval = true)
-    // private List<Tags> tags;
+     @OneToMany(mappedBy = "newsHeadline", cascade = CascadeType.ALL, orphanRemoval = true)
+     private List<Tags> tags;
 
-    // @OneToMany(mappedBy = "newsHeadline", cascade = CascadeType.ALL, orphanRemoval = true)
-    // private List<HashTags> hashtags;
+     @OneToMany(mappedBy = "newsHeadline", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HashTags> hashtags;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @OneToOne(mappedBy = "newsHeadline", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "newsHeadline", cascade = CascadeType.ALL)
     private NewsDetails newsDetails;
 
     public NewsHeadline() {}

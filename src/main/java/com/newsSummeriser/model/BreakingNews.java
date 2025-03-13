@@ -21,7 +21,7 @@ public class BreakingNews {
     @Column(name = "breaking_url")
     private String breakingUrl;
 
-    @Column(name = "breaking_time")  // Renamed column
+    @Column(name = "breaking_time")  
     private String breakingTime;
     private LocalDateTime localDateTime;
     

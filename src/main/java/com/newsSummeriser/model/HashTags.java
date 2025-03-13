@@ -15,5 +15,5 @@ public class HashTags {
 
     @ManyToOne
     @JoinColumn(name = "news_id")
-    private NewsCard newsCard; 
+    private NewsHeadline newsHeadline; 
 }

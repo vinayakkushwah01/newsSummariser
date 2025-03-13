@@ -8,10 +8,11 @@ import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
-import com.newsSummeriser.model.NewsArticle;
-import com.newsSummeriser.repository.NewsArticleRepo;
-import com.newsSummeriser.repository.NewsCardRepo;
-import com.newsSummeriser.model.NewsCard;
+import com.newsSummeriser.model.NewsDetails;
+import com.newsSummeriser.model.NewsHeadline;
+
+import com.newsSummeriser.repository.NewsDetailsRepository;
+import com.newsSummeriser.repository.NewsHeadlineRepository;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,15 +26,19 @@ import java.util.Iterator;
 
 @Service
 public class ContentScraper {
-    @Autowired
-    private NewsArticleRepo newsArticleRepo;
-   @Autowired
-    private NewsCardRepo newsCardRepo;
 
- @PersistenceContext  // ✅ Inject EntityManager properly
+    @Autowired
+    private NewsHeadlineRepository  newsHeadlineRepo;
+
+    @Autowired      
+    private NewsDetailsRepository newsDetailsRepo;
+
+
+
+ @PersistenceContext  //Inject EntityManager properly
     private EntityManager entityManager;
 
-    public String fetchArticle(String url ,Long id ) {
+    public String fetchArticle(String url ,Long id , NewsHeadline newsHeadline ) {
         try {
             // Connect to the website and fetch the document
             Document doc = Jsoup.connect(url).get();
@@ -85,14 +90,19 @@ public class ContentScraper {
                     }
                 }
             }
-                NewsArticle na = new NewsArticle();
-                na.setId(id);
+                NewsDetails na = new NewsDetails();
+                // na.setId(id);
                 na.setHeadline(headline);
                 na.setDetailedNews(detailedNews.toString().trim());
                 na.setImageUrl(imgUrl);
-                newsArticleRepo.save(na);
-
-            // Print extracted and cleaned data
+                na.setNewsHeadline(newsHeadline);
+                newsDetailsRepo.save(na);
+            // System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            // System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            // System.out.println("Saved in news Details ");
+            // System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            // System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            // // Print extracted and cleaned data
             //System.out.println("Headline: " + headline);
             // System.out.println("Image URL: " + imgUrl);
             // System.out.println("\nDetailed News:\n" + detailedNews.toString().trim());
@@ -106,30 +116,30 @@ public class ContentScraper {
     }
 
          //  Run once when the server starts
-    @PostConstruct
-    @Scheduled(fixedRate = 1830000, initialDelay = 60000) // Run every 30.5 min and intial wait for 1 min  minutes
+   @PostConstruct
+   @Scheduled(fixedRate = 1830000, initialDelay = 80000) // Run every 30.5 min and intial wait for 1 min  minutes
     public String mapArticles() {
         entityManager.clear(); //
-        List<NewsCard> unfatchedNewsCards = newsCardRepo.findByFetchedFalse();
+        List<NewsHeadline> unfatchedNewsCards = newsHeadlineRepo.findByFetchedFalse();
     
-        Iterator<NewsCard> iterator = unfatchedNewsCards.iterator();
+        Iterator<NewsHeadline> iterator = unfatchedNewsCards.iterator();
         while (iterator.hasNext()) {
-            NewsCard entity = iterator.next();
+            NewsHeadline entity = iterator.next();
     
             if (entity.getDate() == null) {
                 iterator.remove();
-                newsCardRepo.deleteById(entity.getId());  // Delete from DB
+                newsHeadlineRepo.deleteById(entity.getId());  // Delete from DB
                 continue;
             }
     
             Long id = entity.getId();
-            String url = "https://www.amarujala.com/" + entity.getArticleLink();
+            String url = "https://www.amarujala.com" + entity.getArticleLink();
     
-            String res = fetchArticle(url, id);
+            String res = fetchArticle(url, id ,entity );
     
             if ("Scraping Successful!".equals(res)) {  
                 entity.setFetched(true);
-                newsCardRepo.saveAndFlush(entity);  //  Saves each entity individually
+                newsHeadlineRepo.saveAndFlush(entity);  //  Saves each entity individually
             }
         }
     

@@ -1,5 +1,9 @@
 [
     {
+      "category": "Home",
+      "url": "/"
+    },
+    {
       "category": "देश",
       "url": "/india-news?src=hbmenu"
     },
