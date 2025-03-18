@@ -1,6 +1,10 @@
 package com.newsSummeriser.model;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -41,6 +45,8 @@ public class NewsHeadline {
     private Category category;
 
     @OneToOne(mappedBy = "newsHeadline", cascade = CascadeType.ALL)
+    @JsonManagedReference
+     @JsonIgnore
     private NewsDetails newsDetails;
 
     public NewsHeadline() {}

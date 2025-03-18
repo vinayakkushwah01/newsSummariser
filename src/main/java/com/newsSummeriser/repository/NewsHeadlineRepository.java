@@ -14,5 +14,6 @@ public interface NewsHeadlineRepository extends JpaRepository<NewsHeadline, Long
     Optional<NewsHeadline> findByHeadlineAndImageUrlAndArticleLink(String headline, String imageUrl, String articleLink);
     List <NewsHeadline> findByFetchedFalse();
     boolean existsByHeadlineAndImageUrlAndArticleLink(String headline, String imageUrl, String articleLink);
+    List<NewsHeadline> findByCategoryAndFetchedTrueOrderByDateDesc(Category category);
 
 }

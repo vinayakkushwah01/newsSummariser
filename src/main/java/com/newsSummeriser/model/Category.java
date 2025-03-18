@@ -20,8 +20,8 @@ public class Category {
     @Column(nullable = false)
     private String url;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<NewsHeadline> newsHeadlines;
+    // @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<NewsHeadline> newsHeadlines;
 
     public Category() {}
 

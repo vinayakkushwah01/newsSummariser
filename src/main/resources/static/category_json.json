@@ -1,71 +1,90 @@
 [
-    {
+  {
       "category": "Home",
       "url": "/"
-    },
-    {
+  },
+  {
       "category": "देश",
-      "url": "/india-news?src=hbmenu"
-    },
-    {
+      "url": "/india-news"
+  },
+  {
       "category": "दुनिया",
-      "url": "/world?src=hbmenu"
-    },
-    {
+      "url": "/world"
+  },
+  {
       "category": "मनोरंजन",
-      "url": "/entertainment?src=hbmenu"
-    },
-    {
+      "url": "/entertainment"
+  },
+  {
       "category": "क्रिकेट",
-      "url": "/cricket?src=hbmenu"
-    },
-    {
+      "url": "/cricket"
+  },
+  {
       "category": "कारोबार",
-      "url": "/business?src=hbmenu"
-    },
-    {
+      "url": "/business"
+  },
+  {
       "category": "नौकरी",
-      "url": "/jobs?src=hbmenu"
-    },
-    {
+      "url": "/jobs"
+  },
+  {
       "category": "शिक्षा",
-      "url": "/education?src=hbmenu"
-    },
-    {
+      "url": "/education"
+  },
+  {
       "category": "टेक्नोलॉजी",
-      "url": "/technology?src=hbmenu"
-    },
-    {
+      "url": "/technology"
+  },
+  {
       "category": "ऑटो",
-      "url": "/automobiles?src=hbmenu"
-    },
-    {
+      "url": "/automobiles"
+  },
+  {
       "category": "ज्योतिष",
-      "url": "/astrology?src=hbmenu"
-    },
-    {
+      "url": "/astrology"
+  },
+  {
       "category": "खेल",
-      "url": "/sports?src=hbmenu"
-    },
-    {
+      "url": "/sports"
+  },
+  {
       "category": "हेल्थ एंड फिटनेस",
-      "url": "/lifestyle/fitness?src=hbmenu"
-    },
-    {
+      "url": "/fitness"
+  },
+  {
       "category": "फैशन",
-      "url": "/fashion?src=hbmenu"
-    },
-    {
+      "url": "/fashion"
+  },
+  {
       "category": "शक्ति",
-      "url": "/shakti?src=hbmenu"
-    },
-    {
+      "url": "/shakti"
+  },
+  {
       "category": "आस्था",
-      "url": "/spirituality?src=hbmenu"
-    },
-    {
+      "url": "/spirituality"
+  },
+  {
       "category": "बॉलीवुड",
-      "url": "/entertainment/bollywood?src=hbmenu"
-    }
-  ]
-  
+      "url": "/bollywood"
+  },
+  {
+      "category": "इंदौर",
+      "url": "/indore"
+  },
+  {
+      "category": "मध्य प्रदेश",
+      "url": "/madhya-pradesh"
+  },
+  {
+      "category": "मुंबई",
+      "url": "/mumbai"
+  },
+  {
+      "category": "दिल्ली",
+      "url": "/delhi"
+  },
+  {
+      "category": "भोपाल",
+      "url": "/bhopal"
+  }
+]

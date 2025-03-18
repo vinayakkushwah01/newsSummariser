@@ -100,13 +100,13 @@ public class DataImportJsonService {
         }
     }
 
-    @EventListener(ApplicationReadyEvent.class)  //Automatic runs after server Setup 
+   @EventListener(ApplicationReadyEvent.class)  //Automatic runs after server Setup 
     public void importDataOnStartup() {
         try {
-            File file = new ClassPathResource("static/state_city_list.json").getFile();
-            String jsonFilePath = file.getAbsolutePath();
-            importStateCityData(jsonFilePath);
-            System.out.println("Data import completed on startup!");
+            // File file = new ClassPathResource("static/state_city_list.json").getFile();
+            // String jsonFilePath = file.getAbsolutePath();
+            // importStateCityData(jsonFilePath);
+            // System.out.println("Data import completed on startup!");
             
 
             File file2 = new ClassPathResource("static/category_json.json").getFile();

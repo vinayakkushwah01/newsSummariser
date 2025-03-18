@@ -1,5 +1,7 @@
 package com.newsSummeriser.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,6 +26,7 @@ public class NewsDetails {
 
     @OneToOne
     @JoinColumn(name = "news_headline_id", nullable = false)
+    @JsonBackReference
     private NewsHeadline newsHeadline;
 
     public NewsDetails() {}
