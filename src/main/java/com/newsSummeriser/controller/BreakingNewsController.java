@@ -35,6 +35,6 @@ public class BreakingNewsController {
   public List<BreakingNews> getBreakingNews() {
       return ns.fetchBreakingNews();
   }
-  
-    
+
+ 
 }

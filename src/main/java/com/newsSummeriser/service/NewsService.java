@@ -55,7 +55,7 @@ public class NewsService {
             
             return newsHeadlineRepo.findByCategoryAndFetchedTrueOrderByDateDesc(categories.get(0));
         } catch (Exception e) {
-            throw new Exception("An unexpected error occurred", e);
+            throw new Exception("404 Category not found", e);
         }
     }
     
