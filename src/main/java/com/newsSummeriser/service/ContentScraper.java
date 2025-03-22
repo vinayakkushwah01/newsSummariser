@@ -8,6 +8,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
+import com.newsSummeriser.exception.ContentNotScarpedError;
 import com.newsSummeriser.model.NewsDetails;
 import com.newsSummeriser.model.NewsHeadline;
 
