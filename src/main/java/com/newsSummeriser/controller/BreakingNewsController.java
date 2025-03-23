@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.newsSummeriser.model.BreakingNews;
 import com.newsSummeriser.model.NewsDetails;
-import com.newsSummeriser.service.ContentScraper;
+
 import com.newsSummeriser.service.NewsService;
 
 import java.util.List;
