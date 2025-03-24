@@ -116,8 +116,8 @@ public class ContentScraper {
     }
 
          //  Run once when the server starts
-   @PostConstruct
-   @Scheduled(fixedRate = 1830000, initialDelay = 80000) // Run every 30.5 min and intial wait for 1 min  minutes
+//    @PostConstruct
+//    @Scheduled(fixedRate = 1830000, initialDelay = 80000) // Run every 30.5 min and intial wait for 1 min  minutes
     public String mapArticles() {
         entityManager.clear(); //
         List<NewsHeadline> unfatchedNewsCards = newsHeadlineRepo.findByFetchedFalse();

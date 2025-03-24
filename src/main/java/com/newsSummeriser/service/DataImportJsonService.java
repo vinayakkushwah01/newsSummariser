@@ -100,7 +100,7 @@ public class DataImportJsonService {
         }
     }
 
-   @EventListener(ApplicationReadyEvent.class)  //Automatic runs after server Setup 
+//    @EventListener(ApplicationReadyEvent.class)  //Automatic runs after server Setup 
     public void importDataOnStartup() {
         try {
             // File file = new ClassPathResource("static/state_city_list.json").getFile();
