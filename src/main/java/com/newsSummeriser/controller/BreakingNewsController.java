@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
-
+/**
+ * Controller class for handling breaking news-related API requests.
+ */
 @CrossOrigin(origins = "*") 
 @RestController
 @RequestMapping("/api") 
