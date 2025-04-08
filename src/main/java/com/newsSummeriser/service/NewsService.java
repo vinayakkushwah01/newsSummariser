@@ -2,12 +2,14 @@ package com.newsSummeriser.service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import com.newsSummeriser.exception.ContentNotScarpedError;
 import com.newsSummeriser.model.BreakingNews;
@@ -17,6 +19,12 @@ import com.newsSummeriser.model.NewsHeadline;
 import com.newsSummeriser.repository.BreakingNewsRepo;
 import com.newsSummeriser.repository.CategoryRepository;
 import com.newsSummeriser.repository.NewsHeadlineRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Page;
+
 
 
 @Service 
@@ -44,99 +52,157 @@ public class NewsService {
         return(categoryRepo.findByUrl(temp));
     }
     
-    public List<NewsHeadline> getNewsHeadlines(String url) throws Exception {
-        try {
-            List<Category> categories = getNewsCategory(url);
-            
-            if (categories.isEmpty()) {
-                throw new Exception("Data not found or incorrect category");
-            }
-            
-            return newsHeadlineRepo.findByCategoryAndFetchedTrueOrderByDateDesc(categories.get(0));
-        } catch (Exception e) {
-            throw new Exception("404 Category not found", e);
+    public List<NewsHeadline> getNewsHeadlines(String url, int pageNumber) throws Exception {
+    try {
+        List<Category> categories = getNewsCategory(url);
+        
+        if (categories.isEmpty()) {
+            throw new Exception("Data not found or incorrect category");
         }
+        
+        Pageable pageable = PageRequest.of(pageNumber, 100);  // 100 per page
+        return newsHeadlineRepo.findByCategoryAndFetchedTrueOrderByDateDesc(categories.get(0), pageable).getContent();
+        
+    } catch (Exception e) {
+        throw new Exception("404 Category not found", e);
     }
+}
     
     public List<BreakingNews> fetchBreakingNews(){
        return  breakingNewsRepo.findTop6ByOrderByLocalDateTimeDesc();
     }
-    public NewsDetails fetchBreakingNews(String url ,Long id  ) {
+    // public NewsDetails fetchBreakingNews(String url ,Long id  ) {
+    //     try {
+    //         // Connect to the website and fetch the document
+    //         Document doc = Jsoup.connect(url).get();
+
+    //         // Extract the headline
+    //         Element headlineElement = doc.selectFirst("h1");
+    //         String headline = (headlineElement != null) ? headlineElement.text().trim() : "Headline not found";
+
+
+
+    //         // Extract image element
+    //         Element imageElement = doc.selectFirst("div.image img");
+
+    //         // Extract the correct image URL from `data-src` or `src`
+    //         String imgUrl = "Image not found";
+    //         if (imageElement != null) {
+    //             if (imageElement.hasAttr("data-src")) {
+    //                 String dataSrcUrl = imageElement.absUrl("data-src");
+    //                 if (dataSrcUrl.startsWith("https://staticimg")) {
+    //                     imgUrl = dataSrcUrl;  // Use `data-src` if it's correct
+    //                 }
+    //             } 
+    //             if (imgUrl.equals("Image not found") && imageElement.hasAttr("src")) {
+    //                 String srcUrl = imageElement.absUrl("src");
+    //                 if (srcUrl.startsWith("https://staticimg")) {
+    //                     imgUrl = srcUrl;  // Use `src` only if `data-src` is missing
+    //                 }
+    //             }
+    //         }
+
+    //        // System.out.println("Extracted Image URL: " + imgUrl);
+
+    //         // Select all possible sections containing the article
+    //         Elements contentElements = doc.select("div.article-desc, div.vistaar, div.hide_for_metered_wall");
+
+    //         StringBuilder detailedNews = new StringBuilder();
+    //         List<String> unwantedTexts = Arrays.asList(
+    //                 "विज्ञापन", "Trending Videos यह वीडियो/विज्ञापन हटाएं", "और पढ़ें", "Link Copied"," वॉट्सऐप चैनल फॉलो करें","Follow Us", "पहले जानें-"
+    //         );
+
+    //         for (Element content : contentElements) {
+    //             Elements paragraphs = content.select("p, div");
+    //             for (Element para : paragraphs) {
+    //                 String text = para.text().trim();
+                    
+    //                 // Remove unwanted texts
+    //                 if (!text.isEmpty() && unwantedTexts.stream().noneMatch(text::contains)) {
+    //                     detailedNews.append(text).append("\n\n");
+    //                 }
+    //             }
+    //         }
+    //             NewsDetails na = new NewsDetails();
+    //             // na.setId(id);
+    //             na.setHeadline(headline);
+    //             na.setDetailedNews(detailedNews.toString().trim());
+    //             na.setImageUrl(imgUrl);
+    //             // na.setNewsHeadline(newsHeadline);
+    //             return na;
+
+
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //         throw new ContentNotScarpedError("Can Not Get Article Please try again");
+    //     }
+        
+    // }
+
+    public NewsDetails fetchBreakingNews(String url, Long id) {
         try {
-            // Connect to the website and fetch the document
             Document doc = Jsoup.connect(url).get();
-
-            // Extract the headline
-            Element headlineElement = doc.selectFirst("h1");
-            String headline = (headlineElement != null) ? headlineElement.text().trim() : "Headline not found";
-
-
-
-            // Extract image element
+    
+            // Extract Headline
+            String headline = Optional.ofNullable(doc.selectFirst("h1"))
+                                      .map(Element::text)
+                                      .orElse("Headline not found")
+                                      .trim();
+    
+            // Extract Image URL
             Element imageElement = doc.selectFirst("div.image img");
-
-            // Extract the correct image URL from `data-src` or `src`
             String imgUrl = "Image not found";
+    
             if (imageElement != null) {
-                if (imageElement.hasAttr("data-src")) {
-                    String dataSrcUrl = imageElement.absUrl("data-src");
-                    if (dataSrcUrl.startsWith("https://staticimg")) {
-                        imgUrl = dataSrcUrl;  // Use `data-src` if it's correct
-                    }
-                } 
-                if (imgUrl.equals("Image not found") && imageElement.hasAttr("src")) {
-                    String srcUrl = imageElement.absUrl("src");
-                    if (srcUrl.startsWith("https://staticimg")) {
-                        imgUrl = srcUrl;  // Use `src` only if `data-src` is missing
-                    }
+                String dataSrcUrl = imageElement.absUrl("data-src");
+                String srcUrl = imageElement.absUrl("src");
+    
+                if (dataSrcUrl.startsWith("https://staticimg")) {
+                    imgUrl = dataSrcUrl;
+                } else if (srcUrl.startsWith("https://staticimg")) {
+                    imgUrl = srcUrl;
                 }
             }
-
-           // System.out.println("Extracted Image URL: " + imgUrl);
-
-            // Select all possible sections containing the article
-            Elements contentElements = doc.select("div.article-desc, div.vistaar, div.hide_for_metered_wall");
-
+    
+            // Extract Detailed News Content
+            Elements contentElements = doc.select("div.article-section, div.article-desc, div.vistaar, div.hide_for_metered_wall");
+    
             StringBuilder detailedNews = new StringBuilder();
+    
             List<String> unwantedTexts = Arrays.asList(
-                    "विज्ञापन", "Trending Videos यह वीडियो/विज्ञापन हटाएं", "और पढ़ें", "Link Copied"," वॉट्सऐप चैनल फॉलो करें","Follow Us", "पहले जानें-"
+                    "विज्ञापन", "Trending Videos", "यह वीडियो/विज्ञापन हटाएं",
+                    "और पढ़ें", "Link Copied", "Follow Us",
+                    "पहले जानें-", "Published by", "Updated", "सार", "फोटो : PTI"
             );
-
+    
             for (Element content : contentElements) {
                 Elements paragraphs = content.select("p, div");
                 for (Element para : paragraphs) {
                     String text = para.text().trim();
-                    
-                    // Remove unwanted texts
-                    if (!text.isEmpty() && unwantedTexts.stream().noneMatch(text::contains)) {
+                    if (!text.isEmpty()
+                            && !text.startsWith("{")
+                            && !text.endsWith("}")
+                            && unwantedTexts.stream().noneMatch(text::contains)) {
                         detailedNews.append(text).append("\n\n");
                     }
                 }
             }
-                NewsDetails na = new NewsDetails();
-                // na.setId(id);
-                na.setHeadline(headline);
-                na.setDetailedNews(detailedNews.toString().trim());
-                na.setImageUrl(imgUrl);
-                // na.setNewsHeadline(newsHeadline);
-                return na;
-
-            // System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-            // System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-            // System.out.println("Saved in news Details ");
-            // System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-            // System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-            // // Print extracted and cleaned data
-            //System.out.println("Headline: " + headline);
-            // System.out.println("Image URL: " + imgUrl);
-            // System.out.println("\nDetailed News:\n" + detailedNews.toString().trim());
-
-            // return "Scraping Successful!";
-
+    
+            if (detailedNews.isEmpty()) {
+                detailedNews.append("Detailed News Not Found. Please Visit The Source.");
+            }
+    
+            NewsDetails newsDetails = new NewsDetails();
+            newsDetails.setHeadline(headline);
+            newsDetails.setDetailedNews(detailedNews.toString().trim());
+            newsDetails.setImageUrl(imgUrl);
+    
+            return newsDetails;
+    
         } catch (Exception e) {
             e.printStackTrace();
-            throw new ContentNotScarpedError("Can Not Get Article Please try again");
+            throw new ContentNotScarpedError("Cannot Get Article Please Try Again");
         }
-        
     }
-}
+    
+    }
