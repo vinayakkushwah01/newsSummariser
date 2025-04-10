@@ -109,7 +109,7 @@
     <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
-        <version>4.20.0</version>
+        <version>4.19.0</version>
     </dependency>
 
     <dependency>
@@ -117,6 +117,11 @@
         <artifactId>webdrivermanager</artifactId>
         <version>5.8.0</version>
     </dependency>
+	<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.19.1</version>
+</dependency>
 
 	</dependencies>
 

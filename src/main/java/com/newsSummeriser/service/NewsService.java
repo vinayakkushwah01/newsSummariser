@@ -40,6 +40,8 @@ public class NewsService {
     @Autowired
     private BreakingNewsRepo breakingNewsRepo;
 
+    @Autowired
+    private SNewsScraper sNewsScraper;
 
 
    
@@ -140,69 +142,8 @@ public class NewsService {
     // }
 
     public NewsDetails fetchBreakingNews(String url, Long id) {
-        try {
-            Document doc = Jsoup.connect(url).get();
-    
-            // Extract Headline
-            String headline = Optional.ofNullable(doc.selectFirst("h1"))
-                                      .map(Element::text)
-                                      .orElse("Headline not found")
-                                      .trim();
-    
-            // Extract Image URL
-            Element imageElement = doc.selectFirst("div.image img");
-            String imgUrl = "Image not found";
-    
-            if (imageElement != null) {
-                String dataSrcUrl = imageElement.absUrl("data-src");
-                String srcUrl = imageElement.absUrl("src");
-    
-                if (dataSrcUrl.startsWith("https://staticimg")) {
-                    imgUrl = dataSrcUrl;
-                } else if (srcUrl.startsWith("https://staticimg")) {
-                    imgUrl = srcUrl;
-                }
-            }
-    
-            // Extract Detailed News Content
-            Elements contentElements = doc.select("div.article-section, div.article-desc, div.vistaar, div.hide_for_metered_wall");
-    
-            StringBuilder detailedNews = new StringBuilder();
-    
-            List<String> unwantedTexts = Arrays.asList(
-                    "विज्ञापन", "Trending Videos", "यह वीडियो/विज्ञापन हटाएं",
-                    "और पढ़ें", "Link Copied", "Follow Us",
-                    "पहले जानें-", "Published by", "Updated", "सार", "फोटो : PTI"
-            );
-    
-            for (Element content : contentElements) {
-                Elements paragraphs = content.select("p, div");
-                for (Element para : paragraphs) {
-                    String text = para.text().trim();
-                    if (!text.isEmpty()
-                            && !text.startsWith("{")
-                            && !text.endsWith("}")
-                            && unwantedTexts.stream().noneMatch(text::contains)) {
-                        detailedNews.append(text).append("\n\n");
-                    }
-                }
-            }
-    
-            if (detailedNews.isEmpty()) {
-                detailedNews.append("Detailed News Not Found. Please Visit The Source.");
-            }
-    
-            NewsDetails newsDetails = new NewsDetails();
-            newsDetails.setHeadline(headline);
-            newsDetails.setDetailedNews(detailedNews.toString().trim());
-            newsDetails.setImageUrl(imgUrl);
-    
-            return newsDetails;
-    
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new ContentNotScarpedError("Cannot Get Article Please Try Again");
-        }
+       return sNewsScraper.fetchBreakingNews(url);
     }
+
     
     }
