@@ -3,13 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breaking News Details</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
+    <title>Breaking News</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-    <div id="breaking-news-details">
-        <p>Loading news...</p>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Live News</div>
+
+        <button class="sign-in-btn" onclick="window.location.href='auth.html'">Sign In</button>
+    </nav>
+
+    <nav id="navbar-categories" class="category-container">
+        <!-- Categories will be dynamically loaded here -->
+    </nav>
+
+    <!-- Main Content -->
+    <div id="main-content" style="display: flex; padding: 20px; gap: 20px;">
+
+        <!-- Left: Categories Sidebar -->
+        <div style="width: 15%; color: white;">
+            <h3 style="text-align: center; margin-bottom: 10px;">Categories</h3>
+            <div id="sidebar-categories" class="category-container" style="display: flex; flex-direction: column; gap: 10px;"></div>
+        </div>
+
+        <!-- Right: Breaking News Details -->
+        <div style="width: 85%;">
+            <section id="breaking-news-details" class="news-details" style="background-color: white; padding: 20px; border-radius: 10px;">
+                <!-- JS will fill this -->
+            </section>
+        </div>
     </div>
-    <script src="breakingnews.js"></script>
+
+    <!-- JS -->
+    <script th:src="@{/js/breakingnews.js}"></script>
+  
 </body>
 </html>

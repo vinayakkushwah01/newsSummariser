@@ -279,7 +279,7 @@ nav ul li:hover {
 .category-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     background: #0c0c0c;
     padding: 10px;
     border-bottom: 2px solid #1f1e1e;
@@ -302,6 +302,8 @@ nav ul li:hover {
 
 /* Sidebar Category Container */
 #sidebar-categories {
+    position: sticky;
+    top: 0;
     background-color: #1e1e1e;
     padding: 15px;
     border-radius: 10px;

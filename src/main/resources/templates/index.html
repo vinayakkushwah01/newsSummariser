@@ -14,12 +14,13 @@
     <nav>
         <div class="logo">Live News</div>
 
-        <button class="sign-in-btn">Sign In</button>
+        <button class="sign-in-btn" th:onclick="'window.location.href=\'' + @{/auth.html} + '\''">Sign In</button>
+
     </nav>
 
     <nav id="navbar-categories" class="category-container">
         <!-- Categories will be dynamically loaded here -->
-        <button class="sign-in-btn">Sign In</button>
+        
     </nav>
     
 
