@@ -65,7 +65,7 @@ public class NewsService {
                 throw new Exception("Data not found or incorrect category");
             }
             
-            Pageable pageable = PageRequest.of(pageNumber, 10);  // 100 per page
+            Pageable pageable = PageRequest.of(pageNumber, 12);  // 100 per page
             return newsHeadlineRepo.findByCategoryAndFetchedTrueOrderByDateDesc(categories.get(0), pageable).getContent();
             
         } catch (Exception e) {

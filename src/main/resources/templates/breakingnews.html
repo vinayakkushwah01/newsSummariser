@@ -12,7 +12,7 @@
     <nav>
         <div class="logo">Live News</div>
 
-        <button class="sign-in-btn" onclick="window.location.href='auth.html'">Sign In</button>
+        <button class="sign-in-btn" onclick="window.location.href='auth.html'" id ="login-btn">Sign In</button>
     </nav>
 
     <nav id="navbar-categories" class="category-container">
@@ -38,6 +38,8 @@
 
     <!-- JS -->
     <script th:src="@{/js/breakingnews.js}"></script>
+    <script th:src="@{/js/authCheck.js}"></script>
+    <!-- <script th:src="@{/js/auth.js}"></script> -->
   
 </body>
 </html>

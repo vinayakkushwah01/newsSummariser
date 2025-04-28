@@ -15,7 +15,7 @@
     <nav>
         <div class="logo">Live News</div>
 
-        <button class="sign-in-btn">Sign In</button>
+        <button class="sign-in-btn" id ="login-btn">Sign In</button>
     </nav>
 
     <nav id="navbar-categories" class="category-container">
@@ -70,11 +70,13 @@
 
 <!-- ✅ Make categoryName available to JS -->
 <script th:inline="javascript">
-    let categoryName = /*[[${categoryName}]]*/;
+    let categoryName = /*[[${categoryName}]]*/;  // ignore this error 
     console.log("Category from inline:", categoryName);
 </script>
 <script th:src="@{/js/getCategoryNews.js}"></script>
 <script th:src="@{/js/category.js}"></script>
+<script th:src="@{/js/authCheck.js}"></script>
+<!-- <script th:src="@{/js/auth.js}"></script> -->
 
 </body>
 </html>

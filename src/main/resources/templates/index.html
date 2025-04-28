@@ -14,7 +14,7 @@
     <nav>
         <div class="logo">Live News</div>
 
-        <button class="sign-in-btn" th:onclick="'window.location.href=\'' + @{/auth.html} + '\''">Sign In</button>
+        <button class="sign-in-btn" th:onclick="'window.location.href=\'' + @{/auth.html} + '\''"  id ="login-btn">Sign In</button>
 
     </nav>
 
@@ -63,13 +63,18 @@
 
 </div>
 
-
+<div id="pagination" class="pagination-container">
+    <button id="prev-page" class="pagination-btn">Previous</button>
+    <div id="page-numbers" class="page-numbers"></div>
+    <button id="next-page" class="pagination-btn">Next</button>
+</div>
 
     
 
 
 <script th:src="@{/js/script.js}"></script>
 <script th:src="@{/js/category.js}"></script>
+<script th:src="@{/js/authCheck.js}"></script>
 
 </body>
 </html>

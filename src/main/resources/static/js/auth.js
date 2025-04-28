@@ -25,7 +25,12 @@
       const data = await res.text(); // ✅ now it's parsed
   
       if (res.ok) {
-        localStorage.setItem("token", data); // ✅ this works now
+        const now = new Date();
+        now.setTime(now.getTime() +  10 * 60 * 60 * 1000); // 10 hours  to milliseconds
+        const expires = "expires=" + now.toUTCString();
+        document.cookie = "token" + "=" + data + ";" + expires + ";path=/";
+
+        //localStorage.setItem("token", data); // ✅ this works now
         alert("Login successful!");
         window.location.href = /*[[@{/}]]*/ "/"; // ✅ correct redirect with Thymeleaf if inline
       } else {

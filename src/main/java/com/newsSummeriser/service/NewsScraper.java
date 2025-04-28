@@ -156,7 +156,7 @@ public class NewsScraper {
 
 
 
-    // @Scheduled(fixedRate = 5 * 60 * 1000) // Run every 5 minutes
+    @Scheduled(fixedRate = 5 * 60 * 1000) // Run every 5 minutes
 public List<BreakingNews> fetchBreakingNews() {
     String ajaxUrl = "https://www.amarujala.com/ajax/home-page-live-section";
     List<BreakingNews> breakingNewsList = new ArrayList<>();
