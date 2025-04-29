@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live News</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+</head>
+<body>
+  
+    
+   
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Live News</div>
+
+        <div id="auth-container" class="sign-in-btn"></div>
+    </nav>
+
+    <nav id="navbar-categories" class="category-container">
+        <!-- Categories will be dynamically loaded here -->
+        <button class="sign-in-btn">Sign In</button>
+    </nav>
+    
+
+
+    <!-- Slider and Trending News Section -->
+    <div class="container">
+        <!-- Slider Section -->
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <!-- News slides will be injected here dynamically -->
+            </div>
+            <button class="slider-btn" id="prev">&lt;</button>
+            <button class="slider-btn" id="next">&gt;</button>
+        </div>
+    
+        <!-- Top Trending News Section -->
+        <div class="trending-news">
+            <h2>Breaking News</h2>
+            <ul id="trending-list">
+                <!-- Trending news items will be injected dynamically -->
+            </ul>
+        </div>
+    </div>
+    
+
+<!-- Top News Section -->
+<div id="main-content" style="display: flex; padding: 20px; gap: 20px;">
+    
+    <!-- Left: Categories (20%) -->
+    <div style="width: 15%; color: white;">
+        <h3 style="text-align: center; margin-bottom: 10px;">Categories</h3>
+        <div id="sidebar-categories" class="category-container" ; style= "display: flex; flex-direction: column; gap: 10px;"></div>
+    </div>
+
+    <!-- Right: Top News (80%) -->
+    <div style="width: 85%;">
+        <h2 style="text-align: center; color: white; margin-bottom: 20px;" id="headline_text">Top News</h2>
+        <div id="top-news" class="top-news-grid"></div>
+    </div>
+
+</div>
+
+
+
+    
+<h1 th:text="'Category: ' + ${categoryName}">Category: </h1>
+
+<!-- ✅ Make categoryName available to JS -->
+<script th:inline="javascript">
+    let categoryName = /*[[${categoryName}]]*/;  // ignore this error 
+    console.log("Category from inline:", categoryName);
+</script>
+<script th:src="@{/js/getCategoryNews.js}"></script>
+<script th:src="@{/js/category.js}"></script>
+<script th:src="@{/js/authCheck.js}"></script>
+<!-- <script th:src="@{/js/auth.js}"></script> -->
+
+</body>
+</html>

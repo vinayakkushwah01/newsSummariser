@@ -1,0 +1,23 @@
+<!-- templates/article.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Full Article</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <header>
+        <a th:href="@{/}">← Home</a>
+    </header>
+    <main>
+        <div th:if="${article != null}">
+            <h1 th:text="${article.headline}">Headline</h1>
+            <img th:src="${article.imageUrl}" alt="Image" class="article-image"/>
+            <p th:text="${article.detailedNews}">Full article here</p>
+        </div>
+        <div th:if="${error != null}">
+            <p th:text="${error}" class="error-message">Error message here</p>
+        </div>
+    </main>
+</body>
+</html>

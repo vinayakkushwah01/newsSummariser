@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking News</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Live News</div>
+
+        <div id="auth-container" class="sign-in-btn"></div>
+    </nav>
+
+    <nav id="navbar-categories" class="category-container">
+        <!-- Categories will be dynamically loaded here -->
+    </nav>
+
+    <!-- Main Content -->
+    <div id="main-content" style="display: flex; padding: 20px; gap: 20px;">
+
+        <!-- Left: Categories Sidebar -->
+        <div style="width: 15%; color: white;">
+            <h3 style="text-align: center; margin-bottom: 10px;">Categories</h3>
+            <div id="sidebar-categories" class="category-container" style="display: flex; flex-direction: column; gap: 10px;"></div>
+        </div>
+
+        <!-- Right: Breaking News Details -->
+        <div style="width: 85%;">
+            <section id="breaking-news-details" class="news-details" style="background-color: white; padding: 20px; border-radius: 10px;">
+                <!-- JS will fill this -->
+            </section>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script th:src="@{/js/breakingnews.js}"></script>
+    <script th:src="@{/js/authCheck.js}"></script>
+    <!-- <script th:src="@{/js/auth.js}"></script> -->
+  
+</body>
+</html>

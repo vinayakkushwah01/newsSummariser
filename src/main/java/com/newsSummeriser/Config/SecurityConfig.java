@@ -40,7 +40,8 @@ public class SecurityConfig {
         http.csrf(customizer -> customizer.disable());// desable CSRF 
         
         http.authorizeHttpRequests(request -> request
-        .requestMatchers("/login", "/register", "/api/breakingnews/**", "/api/news/**") // Public Endpoints
+        .requestMatchers("/login", "/register", "/api/breakingnews/**", "/api/news/**" ,
+                         "/**", "/article/**", "/article","/category", "/category/**") // Public Endpoints
         .permitAll()
         .requestMatchers("/admin/**").hasRole("Admin") // Admin Restricted
         .requestMatchers("/user/**").hasAnyRole("Admin", "User") // User Restricted

@@ -5,6 +5,7 @@ package com.newsSummeriser.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.newsSummeriser.dto.UserDto;
@@ -20,6 +21,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository ;
+
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
     // @Autowired
     // BookingService bookingService;
 
@@ -53,6 +56,22 @@ public class UserService {
        return getUserFromUsername( getCurrentUserUsername());
     }
 
+    //private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
+// 🔐 Update Password
+public boolean updatePassword(String oldPassword, String newPassword) {
+    User currentUser = getCurrentLogedInUser();
+
+    if (encoder.matches(oldPassword, currentUser.getPassword())) {
+        currentUser.setPassword(encoder.encode(newPassword));
+        userRepository.save(currentUser);
+        return true;
+    } else {
+        return false; // old password does not match
+    }
+}
+    public UserDto viewProfile() {
+        return getCurrentUserDto();
+    }
     
 }
