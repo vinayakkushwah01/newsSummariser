@@ -25,4 +25,9 @@ public class CategoryPageController {
         model.addAttribute("categoryName", category);
         return "category"; // maps to templates/category.html
     }
+    @GetMapping({"", "/"})
+    public String showHomePage(Model model) {
+        // Optionally load some breaking news if you want
+        return "index"; // maps to templates/home.html
+    }
 }

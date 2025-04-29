@@ -24,4 +24,5 @@ public class HomeController {
         model.addAttribute("breakingNews", breakingNews);
         return "index"; // maps to templates/index.html
     }
+    
 }

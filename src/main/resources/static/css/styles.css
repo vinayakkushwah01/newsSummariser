@@ -29,10 +29,10 @@ nav {
 }
 
 .sign-in-btn {
-    background-color: rgb(0, 94, 255);
+    /* background-color: rgb(0, 94, 255); */
     color: black;
     border: none;
-    padding: 8px 15px;
+    /* padding: 8px 15px; */
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
@@ -375,3 +375,60 @@ nav ul li:hover {
     background-color: #007bff;
     color: white;
 }
+/* Container for the profile and dropdown */
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+/* Profile icon */
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    object-fit: cover;
+}
+
+/* Dropdown content */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Dropdown links */
+.dropdown-menu a {
+    color: #333;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f2f2f2;
+}
+
+/* Button-style fallback login */
+#loginBtn {
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#loginBtn:hover {
+    background-color: #0056b3;
+}
+

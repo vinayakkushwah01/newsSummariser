@@ -321,7 +321,7 @@ async function fetchTopNews() {
     
             // Prevent multiple triggers while already loading
             if (isLoading) return;
-    
+            if (isLoading) return;
             isLoading = true;  // Set loading flag to true
     
             // Add a slight delay (optional)
@@ -345,8 +345,9 @@ async function fetchTopNews() {
             currentPage++;
     
             // Reset loading flag after the fetch is complete
-            isLoading = false;
+            // isLoading = false;
         }
+        // isLoading
     });
     
     async function fetchNewsByPage(currentPage, lastPart) {
