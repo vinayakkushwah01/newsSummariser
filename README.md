@@ -39,7 +39,7 @@ This is a RESTful backend for a news website built with **Spring Boot**. It serv
 
 1. **Clone the repository**  
    ```bash
-   git clone https://github.com/yourusername/news-api-backend.git
+   git clone https://github.com/vinayakkushwah01/newsSummariser.git
    cd news-api-backend
    ```
 
