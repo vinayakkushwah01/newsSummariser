@@ -431,4 +431,11 @@ nav ul li:hover {
 #loginBtn:hover {
     background-color: #0056b3;
 }
-
+#breaking-news-details {
+    flex: 1;
+    background-color: rgb(65, 64, 64);
+    padding: 20px;
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 18px; /* Adjust the font size here */
+}

@@ -91,18 +91,22 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
                 const newsId = this.getAttribute("data-id");
                 const newsUrl = this.getAttribute("data-url");
     
-                if (newsId) {
-                    let finalUrl = `/news_website/breakingnews.html?id=${newsId}`;
-                    if (newsUrl) {
-                        finalUrl += `&url=${encodeURIComponent(newsUrl)}`;  // ✅ Append encoded URL
-                    }
-                    window.location.href = finalUrl;
-                } else {
-                    console.error("Missing News ID!");
+                if (!newsId || !newsUrl) {
+                    console.error("Missing news ID or URL.");
+                    return;
                 }
+    
+                const params = new URLSearchParams();
+                params.set("id", newsId);
+                params.set("url", newsUrl);
+    
+                const finalUrl = `/breakingnews?${params.toString()}`;
+                window.location.href = finalUrl;
             });
         });
     }
+    
+    
     
     // Fetch Top News and render as cards
 async function fetchTopNews() {

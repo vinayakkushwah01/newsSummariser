@@ -30,9 +30,6 @@ import org.springframework.data.domain.Page;
 
 @Service 
 public class NewsService {
-
-   
-
     @Autowired
     private CategoryRepository categoryRepo;
     @Autowired
@@ -45,13 +42,7 @@ public class NewsService {
     private SNewsScraper sNewsScraper;
     @Autowired
     private NewsDetailsRepository newsDetailsRepository;
-
-
-   
-
-
     public List<Category> getNewsCategory(String url){
-       
         String temp = "/"+url ;
         if(url.equals("home")){temp = "/";}
         return(categoryRepo.findByUrl(temp));
@@ -60,27 +51,21 @@ public class NewsService {
     public List<NewsHeadline> getNewsHeadlines(String url, int pageNumber) throws Exception {
         try {
             List<Category> categories = getNewsCategory(url);
-            
             if (categories.isEmpty()) {
                 throw new Exception("Data not found or incorrect category");
             }
-            
-            Pageable pageable = PageRequest.of(pageNumber, 12);  // 100 per page
+            Pageable pageable = PageRequest.of(pageNumber, 12);  
             return newsHeadlineRepo.findByCategoryAndFetchedTrueOrderByDateDesc(categories.get(0), pageable).getContent();
-            
         } catch (Exception e) {
             throw new Exception("404 Category not found", e);
         }
     }
-    
     public List<BreakingNews> fetchBreakingNews(){
        return  breakingNewsRepo.findTop6ByOrderByLocalDateTimeDesc();
     }
-
     public NewsDetails fetchBreakingNews(String url, Long id) {
        return sNewsScraper.fetchBreakingNews(url);
     }
-
     public Optional<NewsDetails> getFullNewsArticle(Long id){
     return newsDetailsRepository.findById(id);
     }

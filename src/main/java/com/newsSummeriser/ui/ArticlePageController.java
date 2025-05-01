@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/article")
+@RequestMapping("/")
 public class ArticlePageController {
 
     @Autowired
     private NewsService newsService;
 
-    @GetMapping("/{id}")
+    @GetMapping("article/{id}")
     public String showFullArticle(@PathVariable Long id, Model model) {
         Optional<NewsDetails> newsDetails = newsService.getFullNewsArticle(id);
         if (newsDetails.isPresent()) {
@@ -26,4 +26,12 @@ public class ArticlePageController {
         }
         return "article"; // maps to templates/article.html
     }
+@GetMapping("breakingnews")
+    public String breakingNewsPage(@RequestParam("id") Long id, 
+    @RequestParam("url") String url, 
+    Model model) {
+        model.addAttribute("id", id);
+    model.addAttribute("url", url);
+    return "breakingnews"; // Resolves to breakingnews.html
+}
 }

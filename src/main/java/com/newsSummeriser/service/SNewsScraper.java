@@ -28,14 +28,10 @@ public class SNewsScraper {
                 String jsonData = scriptTag.html();
 
                 JsonNode jsonNode = objectMapper.readTree(jsonData);
-
-                // Check for NewsArticle type
                 if (jsonNode.has("@type") && jsonNode.get("@type").asText().equals("NewsArticle")) {
 
                     String headline = jsonNode.path("headline").asText();
                     String articleBody = jsonNode.path("articleBody").asText();
-
-                    // Extract image url
                     String imageUrl = "";
                     JsonNode imageNode = jsonNode.path("image");
                     if (imageNode.isTextual()) {
@@ -43,12 +39,10 @@ public class SNewsScraper {
                     } else if (imageNode.isObject()) {
                         imageUrl = imageNode.path("url").asText();
                     }
-
                     newsDetails.setHeadline(headline);
                     newsDetails.setDetailedNews(articleBody);
                     newsDetails.setImageUrl(imageUrl);
-
-                    break; // Exit once found
+                    break; 
                 }
             }
 
