@@ -1,23 +1,62 @@
-<!-- templates/article.html -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <title>Full Article</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .error-message { color: red; font-weight: bold; }
+        .article-image { width: 100%; max-width: 600px; margin: 20px 0; }
+        #article-container { max-width: 800px; margin: auto; padding: 20px; font-family: Arial, sans-serif; }
+    </style>
 </head>
 <body>
     <header>
-        <a th:href="@{/}">← Home</a>
+        <a href="/">← Home</a>
     </header>
-    <main>
-        <div th:if="${article != null}">
-            <h1 th:text="${article.headline}">Headline</h1>
-            <img th:src="${article.imageUrl}" alt="Image" class="article-image"/>
-            <p th:text="${article.detailedNews}">Full article here</p>
-        </div>
-        <div th:if="${error != null}">
-            <p th:text="${error}" class="error-message">Error message here</p>
-        </div>
+    <main id="article-container">
+        <h1 id="headline">Loading...</h1>
+        <img id="article-image" class="article-image" src="" alt="News Image" style="display: none;" />
+        <p id="article-content"></p>
+        <p id="error-message" class="error-message" style="display: none;"></p>
     </main>
+
+    <script>
+         function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+        document.addEventListener("DOMContentLoaded", async () => {
+
+            const token = getCookie("token");
+            // Extract article ID from the URL (e.g., /article/1358)
+            const pathParts = window.location.pathname.split("/");
+            const id = pathParts[pathParts.length - 1];
+
+            try {
+                const response = await fetch(`http://localhost:8080/api/article/${id}`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) throw new Error("Failed to load article");
+
+                const article = await response.json();
+
+                document.getElementById("headline").textContent = article.headline;
+                document.getElementById("article-image").src = article.imageUrl;
+                document.getElementById("article-image").style.display = "block";
+                document.getElementById("article-content").textContent = article.detailedNews;
+
+            } catch (error) {
+                document.getElementById("headline").textContent = "Error loading article";
+                document.getElementById("error-message").textContent = error.message;
+                document.getElementById("error-message").style.display = "block";
+            }
+        });
+    </script>
 </body>
 </html>
