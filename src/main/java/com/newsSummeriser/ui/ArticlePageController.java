@@ -18,20 +18,17 @@ public class ArticlePageController {
 
     @GetMapping("article/{id}")
     public String showFullArticle(@PathVariable Long id, Model model) {
-        Optional<NewsDetails> newsDetails = newsService.getFullNewsArticle(id);
-        if (newsDetails.isPresent()) {
-            model.addAttribute("article", newsDetails.get());
-        } else {
-            model.addAttribute("error", "Article not found.");
-        }
+        model.addAttribute("id", id);
+        System.out.println(id);
         return "article"; // maps to templates/article.html
     }
-@GetMapping("breakingnews")
-    public String breakingNewsPage(@RequestParam("id") Long id, 
-    @RequestParam("url") String url, 
-    Model model) {
+
+    @GetMapping("breakingnews")
+    public String breakingNewsPage(@RequestParam("id") Long id,
+            @RequestParam("url") String url,
+            Model model) {
         model.addAttribute("id", id);
-    model.addAttribute("url", url);
-    return "breakingnews"; // Resolves to breakingnews.html
-}
+        model.addAttribute("url", url);
+        return "breakingnews"; // Resolves to breakingnews.html
+    }
 }
