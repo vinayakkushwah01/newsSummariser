@@ -121,6 +121,7 @@ async function fetchTopNews() {
     topNews.forEach(news => {
         const card = document.createElement("div");
         card.classList.add("news-card");
+        card.setAttribute ("id", news.id); // Add data-id attribute
 
         card.innerHTML = `
             <img src="${news.image}" alt="News Image" th:onerror="src=@{/Assets/default.jpg};">
