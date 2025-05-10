@@ -35,7 +35,7 @@ function checkLoginStatus() {
     //         window.location.href = "/auth.html"; // or your login page
     //     };
     // }
-
+    console .log("Checking login status...");
     const token = getCookie("token"); // Assume this function retrieves the token from cookies
     const authContainer = document.getElementById("auth-container");
     
@@ -68,6 +68,7 @@ function checkLoginStatus() {
         document.getElementById("loginBtn").onclick = function () {
             window.location.href = "/auth.html";
         };
+
     }
     
 }
@@ -84,3 +85,31 @@ document.addEventListener("click", function (event) {
     }
 });
 checkLoginStatus();
+
+
+function checkLoginOfUser() {
+    const cookies = document.cookie.split(';');
+    let token = null;
+
+    for (let cookie of cookies) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'token') {
+            token = value;
+            break;
+        }
+    }
+
+    if (!token) return false;
+
+    // Optional: Check expiry if it's stored in another cookie
+    // For example, assuming expiry is stored in 'token_expiry' as a timestamp
+    const expiryCookie = cookies.find(c => c.trim().startsWith('token_expiry='));
+    if (expiryCookie) {
+        const expiry = parseInt(expiryCookie.split('=')[1]);
+        const now = new Date().getTime();
+        return now < expiry;
+    }
+
+    // If no explicit expiry info, assume token exists means logged in
+    return true;
+}

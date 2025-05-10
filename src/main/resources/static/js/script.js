@@ -77,7 +77,7 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
         breakingNews.slice(0, 7).forEach(news => {
             let listItem = document.createElement("li");
             listItem.classList.add("news-title");
-            listItem.setAttribute("data-id", news.id);
+            listItem.setAttribute("data-id", 12);
             listItem.setAttribute("data-url", news.url);  // ✅ Add URL attribute
             listItem.innerHTML = `🔥 ${news.title}`;
             trendingList.appendChild(listItem);
@@ -86,6 +86,10 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
     }
     
     function addClickEventToBreakingNews() {
+
+        //Check if user is logged in
+        checkLoginStatus();
+
         document.querySelectorAll(".news-title").forEach(title => {
             title.addEventListener("click", function () {
                 const newsId = this.getAttribute("data-id");
@@ -143,7 +147,13 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
             card.addEventListener("click", () => {
                 const articleId = card.getAttribute("id");
                 console.log("Card ID:", articleId);
-    
+                // Check if user is logged in
+               if( !checkLoginOfUser()){
+                window.location.href = "/auth.html";
+               }
+
+                
+            
                 // Make GET request to backend API
                 fetch(`/article/${articleId}`)
                     .then(response => {
