@@ -407,39 +407,47 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
             const card = document.createElement("div");
             card.classList.add("news-card");
             card.setAttribute("id", news.id);
+            console.log("Id  temp " + news.id);   
     
             card.innerHTML = `
                 <img src="${news.image}" alt="News Image" th:onerror="this.src=@{/Assets/default.jpg};">
                 <div class="card-content">
                     <h3>${news.title}</h3>
-                    <!-- <a href="${news.url}" target="_blank">Read More</a>-->
+                    //&&&&&??? 
                 </div>
             `;
     
             topNewsContainer.appendChild(card);
         });
-        const cards = document.getElementsByClassName("news-card");
+         // ✅ Add click event to each news-card
+         const cards = document.getElementsByClassName("news-card");
     
-        Array.from(cards).forEach(card => {
-            card.addEventListener("click", () => {
-                const articleId = card.getAttribute("id");
-                console.log("Card ID:", articleId);
-    
-                // Make GET request to backend API
-                fetch(`/article/${articleId}`)
-                    .then(response => {
-                        console.log(response);
-                        window.location.href = response.url;
-                      // r(response.url);
-                    })
-                    .then(data => {
-                        console.log("Article loaded", data);
-                    })
-                    .catch(error => {
-                        console.error("Error fetching article:", error);
-                    });
-            });
-        });
+         Array.from(cards).forEach(card => {
+             card.addEventListener("click", () => {
+                 const articleId = card.getAttribute("id");
+                 console.log("Card ID:", articleId);
+                 // Check if user is logged in
+                if( !checkLoginOfUser()){
+                 window.location.href = "/auth.html";
+                }
+ 
+                 
+             
+                 // Make GET request to backend API
+                 fetch(`/article/${articleId}`)
+                     .then(response => {
+                         console.log(response);
+                         window.location.href = response.url;
+                       // r(response.url);
+                     })
+                     .then(data => {
+                         console.log("Article loaded", data);
+                     })
+                     .catch(error => {
+                         console.error("Error fetching article:", error);
+                     });
+             });
+         });
     }
     
 
