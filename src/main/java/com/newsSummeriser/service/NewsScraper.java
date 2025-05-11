@@ -47,8 +47,8 @@ public class NewsScraper {
     @Autowired
     private BreakingNewsRepo breakingNewsRepo;
 
-//     @PostConstruct
-//    @Scheduled(fixedRate = 30 * 60 * 1000) // Run every 30 minutes
+    @PostConstruct
+   @Scheduled(fixedRate = 30 * 60 * 1000) // Run every 30 minutes
     public void getCategoryWiseNews(){
         String url = "https://www.amarujala.com";
       List<Category> categoryList =   categoryRepo.findAll();

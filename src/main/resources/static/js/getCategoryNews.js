@@ -127,7 +127,7 @@ async function fetchTopNews() {
             <img src="${news.image}" alt="News Image" th:onerror="src=@{/Assets/default.jpg};">
             <div class="card-content">
                 <h3>${news.title}</h3>
-                <!--<a href="${news.url}" target="_blank"> Time pass reed more Read More</a>-->
+                
             </div>
         `;
 

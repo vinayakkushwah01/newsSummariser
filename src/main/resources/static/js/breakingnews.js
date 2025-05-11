@@ -1,3 +1,7 @@
+// import { Client } from "@gradio/client";
+
+let FinalNewsURl =null;
+
 document.addEventListener("DOMContentLoaded", async () => {
     const categoriesContainer = document.getElementById("navbar-categories");
     const sidebarCategories = document.getElementById("sidebar-categories");
@@ -72,6 +76,7 @@ function formatNewsDetails(detailedNews) {
 }
 // Fetch breaking news details
 async function fetchBreakingNewsDetails(newsId, newsUrl) {
+    FinalNewsURl = newsUrl;
     try {
         const encodedUrl = encodeURIComponent(newsUrl);
         const response = await fetch(`http://localhost:8080/api/breakingnews/${newsId}?url=${encodedUrl}`);
@@ -124,6 +129,7 @@ async function fetchTopNews() {
 document.getElementById("summarize-btn").addEventListener("click", async function() {
     // Check if the token is present and valid in cookies
     const token = getCookie("token");
+    
    // const tokenExpiry = getCookie("tokenExpiry");
 //|| !tokenExpiry || Date.now() > new Date(tokenExpiry).getTime()
     // If token doesn't exist or has expired, show alert and redirect to login
@@ -141,30 +147,31 @@ document.getElementById("summarize-btn").addEventListener("click", async functio
     const detailedNews = "शोधकर्ताओं का कहना है कि गंध की संरचना को रासायनिक रूप से फिर से बनाने से दूसरों को ममी की गंध का अनुभव करने का मौका मिलेगा और यह बताने में मदद मिलेगी कि अंदर के शव कब सड़ने लगे हैं। यूनिवर्सिटी कॉलेज लंदन के इंस्टीट्यूट फॉर सस्टेनबल हेरिटेज में शोध निदेशक और रिसर्च टीम का नेतृत्व करने वाली सेसिलिया बेम्बिब्रे ने बताया कि 'हम ममी को सूंघने के अनुभव को साझा करना चाहते हैं। इसलिए हम काहिरा में मिस्र के संग्रहालय में प्रस्तुत करने के लिए गंध का पुनिर्निर्माण कर रहे हैं।'";
 
     // Send POST request to summarize the text using the API
-    try {
-        const response = await fetch('https://api.apyhub.com/ai/summarize-text', {
-            method: 'POST',
+     try {
+        const response = await fetch("https://hf.space/embed/d0r1h/Hindi_News_Summarizer/api/predict/", {
+ 
+            method: "POST",
             headers: {
-                'apy-token': 'APY0710m76tqVGVaRKbCnZFD2VhJYnPOfIgoghsxS57fLH3QBpnbnMj84TWLM5t1FtaALcm', // Replace with actual token
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                text: "शोधकर्ताओं का कहना है कि गंध की संरचना को रासायनिक रूप से फिर से बनाने से दूसरों को ममी की गंध का अनुभव करने का मौका मिलेगा और यह बताने में मदद मिलेगी कि अंदर के शव कब सड़ने लगे हैं। यूनिवर्सिटी कॉलेज लंदन के इंस्टीट्यूट फॉर सस्टेनबल हेरिटेज में शोध निदेशक और रिसर्च टीम का नेतृत्व करने वाली सेसिलिया बेम्बिब्रे ने बताया कि 'हम ममी को सूंघने के अनुभव को साझा करना चाहते हैं। इसलिए हम काहिरा में मिस्र के संग्रहालय में प्रस्तुत करने के लिए गंध का पुनिर्निर्माण कर रहे हैं।'",
-                summary_length: 'short',
-                output_language: 'hi'
+                data: [
+                    FinalNewsURl, // This can be a full news URL or raw text
+                    "BART"         // Model choice: "BART" or "T5"
+                ]
             })
         });
 
-        const data = await response.json();
+        const result = await response.json();
 
         // Hide loader and show the summarized news
         document.getElementById("loader").style.display = "none";
         document.getElementById("summarized-news").innerHTML = `
             <h4>Summarized Article:</h4>
-            <p>${data.summary || "Unable to summarize the article."}</p>
+            <p>${result.data?.[0] || "Unable to summarize the article."}</p>
         `;
     } catch (error) {
-        console.error('Error summarizing text:', error);
+        console.error("Error summarizing text:", error);
         document.getElementById("loader").style.display = "none";
         document.getElementById("summarized-news").innerHTML = `
             <p>Failed to summarize the article. Please try again later.</p>

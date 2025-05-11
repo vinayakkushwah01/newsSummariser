@@ -355,7 +355,6 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
                 <img src="${news.image}" alt="News Image" th:onerror="this.src=@{/Assets/default.jpg};">
                 <div class="card-content">
                     <h3>${news.title}</h3>
-                    //&&&&&??? 
                 </div>
             `;
             console.log(news);
