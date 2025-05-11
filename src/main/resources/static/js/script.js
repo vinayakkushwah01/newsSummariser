@@ -286,71 +286,12 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
             });
         });
     }
-    // let currentPage = 1;
-    // let isLoading = false;  // To prevent multiple fetches at once
-    
-    // window.addEventListener('scroll', () => {
-    //     const scrollTop = window.scrollY;
-    //     const windowHeight = window.innerHeight;
-    //     const documentHeight = document.documentElement.scrollHeight;
-    
-    //     if (scrollTop + windowHeight >= documentHeight - 10) { 
-    //         // 🔥 User has scrolled to (or very near to) the bottom
-    //         console.log('Reached end of page!');
-    
-    //         // Prevent multiple triggers while already loading
-    //         if (isLoading) return;
-    
-    //         isLoading = true;  // Set loading flag to true
-    
-    //         setTimeout(async () => {
-    //             // Increment page after the data is loaded
-    //             const currentUrl = window.location.href;
-    //             const urlObj = new URL(currentUrl);
-    //             const pathParts = urlObj.pathname.split("/").filter(Boolean); // only path, no domain
-    //             let lastPart = pathParts.length > 0 ? pathParts[pathParts.length - 1] : "home";
-    
-    //             if (lastPart === "api" || lastPart === "category" || lastPart === "news") {
-    //                 lastPart = "home"; // fallback if URL is incomplete
-    //             }
-    
-    //             console.log("last part " + lastPart);
-    
-    //             // Fetch and load more data
-    //             await fechNewsByPage(currentPage, lastPart);
-    
-    //             // Increment page number after the fetch is complete
-    //             currentPage++;
-    
-    //             // Reset loading flag after the fetch
-    //             isLoading = false;
-    //         }, 200);  // 2-second delay before triggering the next fetch
-    //     }
-    // });
-    
-    // async function fechNewsByPage(currentPage, lastPart) {
-    //     const BASE_URL = "http://localhost:8080/api/news";
-    //     const topNews = await fetchNews(`${BASE_URL}/${lastPart}?page=${currentPage}`);
-    //     const topNewsContainer = document.getElementById("top-news");
-    
-    //     if (!topNews.length) return;
-    
-    //     topNews.forEach(news => {
-    //         const card = document.createElement("div");
-    //         card.classList.add("news-card");
-    
-    //         card.innerHTML = `
-    //             <img src="${news.image}" alt="News Image" th:onerror="this.src=@{/Assets/default.jpg};">
-    //             <div class="card-content">
-    //                 <h3>${news.title}</h3>
-    //                 <a href="${news.url}" target="_blank">Read More</a>
-    //             </div>
-    //         `;
-    
-    //         topNewsContainer.appendChild(card);
-    //     });
-    // }
-    
+   
+
+
+
+
+
     // Initialize all sections
 
 
@@ -417,7 +358,7 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
                     //&&&&&??? 
                 </div>
             `;
-    
+            console.log(news);
             topNewsContainer.appendChild(card);
         });
          // ✅ Add click event to each news-card
@@ -427,6 +368,7 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
              card.addEventListener("click", () => {
                  const articleId = card.getAttribute("id");
                  console.log("Card ID:", articleId);
+                 
                  // Check if user is logged in
                 if( !checkLoginOfUser()){
                  window.location.href = "/auth.html";

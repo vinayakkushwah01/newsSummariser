@@ -66,8 +66,10 @@ public class NewsService {
     public NewsDetails fetchBreakingNews(String url, Long id) {
        return sNewsScraper.fetchBreakingNews(url);
     }
-    public Optional<NewsDetails> getFullNewsArticle(Long id){
-    return newsDetailsRepository.findById(id);
+    public NewsDetails getFullNewsArticle(Long id){
+    
+    return newsDetailsRepository.findByNewsHeadlineId(id);
+    //return  sample;
     }
 
     

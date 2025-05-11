@@ -19,7 +19,7 @@ public class NewsArticleController {
    @Autowired
     private NewsService ns ;
     @GetMapping("/article/{id}")
-  public Optional<NewsDetails> getNewsArticle(@PathVariable  Long  id ) {
+  public NewsDetails getNewsArticle(@PathVariable  Long  id ) {
     return ns.getFullNewsArticle(id);
   }
 }
