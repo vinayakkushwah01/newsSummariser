@@ -162,17 +162,46 @@ async function updateTopNews(newsList) {
         console.log(news);
         const card = document.createElement("div");
         card.classList.add("news-card");
-
+        card.setAttribute ("id", news.id); // Add data-id attribute
         card.innerHTML = `
             <img src="https://${news.imageUrl}" alt="News Image" th:onerror="this.src='@{/Assets/default.jpg}'">
             <div class="card-content">
                 <h3>${news.headline}</h3>
-                <a href="${news.articleLink}" target="_blank">Read More</a>
+               //ndjnd d//
             </div>
         `;
 
         topNewsContainer.appendChild(card);
     });
+    const cards = document.getElementsByClassName("news-card");
+    
+    Array.from(cards).forEach(card => {
+        card.addEventListener("click", () => {
+            const articleId = card.getAttribute("id");
+            console.log("Card ID:", articleId);
+            // Check if user is logged in
+           if( !checkLoginOfUser()){
+            window.location.href = "/auth.html";
+           }
+
+            
+        
+            // Make GET request to backend API
+            fetch(`/article/${articleId}`)
+                .then(response => {
+                    console.log(response);
+                    window.location.href = response.url;
+                  // r(response.url);
+                })
+                .then(data => {
+                    console.log("Article loaded", data);
+                })
+                .catch(error => {
+                    console.error("Error fetching article:", error);
+                });
+        });
+    });
+    
 }
 
 let currentPage = 1;
@@ -219,16 +248,45 @@ async function fetchNewsByPage(currentPage, lastPart) {
         data.forEach(news => {
             const card = document.createElement("div");
             card.classList.add("news-card");
+            card.setAttribute ("id", news.id); // Add data-id attribute
 
             card.innerHTML = `
                 <img src="https://${news.imageUrl}" alt="News Image" th:onerror="this.src='@{/Assets/default.jpg}'">
                 <div class="card-content">
                     <h3>${news.headline}</h3>
-                    <a href="${news.articleLink}" target="_blank">Read More</a>
+                    ??&&&&&??
                 </div>
             `;
 
             topNewsContainer.appendChild(card);
+        });
+        const cards = document.getElementsByClassName("news-card");
+    
+        Array.from(cards).forEach(card => {
+            card.addEventListener("click", () => {
+                const articleId = card.getAttribute("id");
+                console.log("Card ID:", articleId);
+                // Check if user is logged in
+               if( !checkLoginOfUser()){
+                window.location.href = "/auth.html";
+               }
+    
+                
+            
+                // Make GET request to backend API
+                fetch(`/article/${articleId}`)
+                    .then(response => {
+                        console.log(response);
+                        window.location.href = response.url;
+                      // r(response.url);
+                    })
+                    .then(data => {
+                        console.log("Article loaded", data);
+                    })
+                    .catch(error => {
+                        console.error("Error fetching article:", error);
+                    });
+            });
         });
     } catch (error) {
         console.error("Error fetching page news:", error);

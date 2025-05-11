@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 description: article.subheading || "No Description",
                 image: article.imageUrl ? (article.imageUrl.startsWith("//") ? `https:${article.imageUrl}` : article.imageUrl) : "Assets/default.jpg",
                 url: article.articleLink || article.breakingUrl || "#",
-                id: article.tid || null,
+                id: article.id || null,
                 time: article.date || "Unknown Time"
             }));
         } catch (error) {
@@ -121,16 +121,48 @@ async function fetchTopNews() {
     topNews.forEach(news => {
         const card = document.createElement("div");
         card.classList.add("news-card");
+        card.setAttribute ("id", news.id); // Add data-id attribute
 
         card.innerHTML = `
             <img src="${news.image}" alt="News Image" th:onerror="src=@{/Assets/default.jpg};">
             <div class="card-content">
                 <h3>${news.title}</h3>
-                <a href="${news.url}" target="_blank">Read More</a>
+                <!--<a href="${news.url}" target="_blank"> Time pass reed more Read More</a>-->
             </div>
         `;
 
         topNewsContainer.appendChild(card);
+    });
+
+
+    // ✅ Add click event to each news-card
+    const cards = document.getElementsByClassName("news-card");
+    
+    Array.from(cards).forEach(card => {
+        card.addEventListener("click", () => {
+            const articleId = card.getAttribute("id");
+            console.log("Card ID:", articleId);
+            // Check if user is logged in
+           if( !checkLoginOfUser()){
+            window.location.href = "/auth.html";
+           }
+
+            
+        
+            // Make GET request to backend API
+            fetch(`/article/${articleId}`)
+                .then(response => {
+                    console.log(response);
+                    window.location.href = response.url;
+                  // r(response.url);
+                })
+                .then(data => {
+                    console.log("Article loaded", data);
+                })
+                .catch(error => {
+                    console.error("Error fetching article:", error);
+                });
+        });
     });
 }
 
