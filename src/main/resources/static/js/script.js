@@ -77,7 +77,8 @@ const newsData = await fetchNews(`${BASE_URL}/news/home?page=${currentPage}`);
         breakingNews.slice(0, 7).forEach(news => {
             let listItem = document.createElement("li");
             listItem.classList.add("news-title");
-            listItem.setAttribute("data-id", news.id);
+            listItem.setAttribute("data-id", 77);
+            console.log(news.id);
             listItem.setAttribute("data-url", news.url);  // ✅ Add URL attribute
             listItem.innerHTML = `🔥 ${news.title}`;
             trendingList.appendChild(listItem);

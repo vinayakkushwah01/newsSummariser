@@ -46,7 +46,7 @@ function checkLoginStatus() {
                <img src="/Assets/profile.png" alt="Profile" class="profile-icon" onclick="toggleDropdown()" />
 
                 <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="/user/profile">View Profile</a>
+                   
                     <a href="/user/update-password">Update Password</a>
                     <a href="#" id="logoutBtn">Logout</a>
                 </div>
