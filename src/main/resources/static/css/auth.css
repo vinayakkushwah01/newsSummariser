@@ -1,35 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-  body {
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('/assets/bg.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
 
-  .container {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px #ccc;
-    width: 300px;
-  }
+.container {
+  background: rgba(255, 255, 255, 0.0);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 18px;
+  padding: 45px 35px;
+  width: 370px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
 
-  .form-box {
-    display: flex;
-    flex-direction: column;
-  }
+h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+}
 
-  .form-box input, .form-box select, .form-box button {
-    margin: 10px 0;
-    padding: 10px;
-    width: 100%;
-  }
+.form-box {
+  display: flex;
+  flex-direction: column;
+}
 
-  .form-box a {
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
-  }
+input, select {
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: rgba(159, 167, 174, 0.6);
+  outline: none;
+  transition: all 0.3s ease;
+  width: 90%;
+  backdrop-filter: blur(10px);
 
+}
+
+input::placeholder {
+  color: rgba(159, 167, 174, 0.6);
+}
+
+input:focus, select:focus {
+  border: 1px solid #333041;
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 10px #303a53;
+}
+
+button {
+  background: linear-gradient(135deg, #271363, #4b0cdf);
+  color: #ffffff;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  width: 60%;
+  margin-left: 20%;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #2d1d67, #3906ba);
+  box-shadow: 0 0 15px #a884f9;
+}
+
+p {
+  text-align: center;
+  font-size: 14px;
+  color: #dddddd;
+  margin-top: 15px;
+}
+
+a {
+  color: #14d283;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}

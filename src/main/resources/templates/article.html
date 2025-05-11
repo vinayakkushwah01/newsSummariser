@@ -5,20 +5,68 @@
     <link rel="stylesheet" href="/css/styles.css">
     <style>
         .error-message { color: red; font-weight: bold; }
-        .article-image { width: 100%; max-width: 600px; margin: 20px 0; }
+        .article-image { width: 100%; max-width: 800px; margin: 20px 0; }
         #article-container { max-width: 800px; margin: auto; padding: 20px; font-family: Arial, sans-serif; }
+        .home-button {
+        margin-top: 10px;
+        margin-left: 10px;
+        padding: 12px 24px;
+        font-weight: bold;
+        font-family:'Times New Roman', Times, serif;
+        font-size: 18px;
+        background-color: #313232;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-button:hover {
+        background-color: #131314;
+        transform: scale(1.05);
+        }
+        .styled-footer {
+        background-color: #232525;
+        color: #fff;
+        text-align: center;
+        padding: 15px 15px;
+        font-size: 16x;
+        margin-top: 40px;
+        }
+
+        .styled-footer a {
+        color: #cce5ff;
+        text-decoration: none;
+        font-weight: bold;
+        }
+
+        .styled-footer a:hover {
+        text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
     <header>
-        <a href="/">← Home</a>
+       <button onclick="location.href='/'" class="home-button">← Home</button>
     </header>
-    <main id="article-container">
-        <h1 id="headline">Loading...</h1>
-        <img id="article-image" class="article-image" src="" alt="News Image" style="display: none;" />
-        <p id="article-content"></p>
+</header>
+<h1 style="text-align: center; color: aliceblue; padding-bottom: 2%; font-size: 45px;">Summarised News Article</h1>
+    <main id="article-container" style="width: 85%; background-color: rgb(65, 64, 64);">
+        <h1 id="headline" style="color: aliceblue;">Loading...</h1>
+        <img id="article-image" class="article-image" src="" alt="News Image" style="display: none; " />
+        <p id="article-content" style="color: aliceblue;"></p>
         <p id="error-message" class="error-message" style="display: none;"></p>
     </main>
+<footer class="styled-footer">
+  <div class="footer-content">
+    <p>Copyright © 2025 | All rights reserved | With the use of 
+      <a href="https://www.amarujala.com" target="_blank">Amar Ujala</a>
+    </p>
+  </div>
+</footer>
 
     <script>
          function getCookie(name) {
