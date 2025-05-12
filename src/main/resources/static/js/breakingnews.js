@@ -148,17 +148,17 @@ document.getElementById("summarize-btn").addEventListener("click", async functio
 
     // Send POST request to summarize the text using the API
      try {
-        const response = await fetch("https://hf.space/embed/d0r1h/Hindi_News_Summarizer/api/predict/", {
+        const response = await fetch("https://api.apyhub.com/ai/summarize-text&summary_length=long&output_language=hi&summary_length=long", {
  
             method: "POST",
             headers: {
+                "apy-token":"APY0710m76tqVGVaRKbCnZFD2VhJYnPOfIgoghsxS57fLH3QBpnbnMj84TWLM5t1FtaALcm",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                data: [
-                    FinalNewsURl, // This can be a full news URL or raw text
-                    "BART"         // Model choice: "BART" or "T5"
-                ]
+                "text" : detailedNews,
+                "summary_length": "long",
+                "output_language": "hi"
             })
         });
 
